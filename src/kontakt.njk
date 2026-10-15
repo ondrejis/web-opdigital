@@ -4,25 +4,26 @@ permalink: /kontakt/
 title: "Kontakt"
 description: "Máte představu, zadání nebo jen nápad? Napište nám, co řešíte. Ozveme se do druhého pracovního dne."
 ---
+{% set contactNumber = false %}
 {% include "partials/contact.njk" %}
 
-<section class="section">
-  <div class="wrap grid grid-cols-1 md:grid-cols-3 gap-px bg-line border-2 border-line" data-reveal-group>
-    <div class="bg-bg p-8 md:p-12" data-reveal-item>
+<section class="border-t-2 border-line">
+  <div class="grid grid-cols-1 md:grid-cols-3 divide-y-2 md:divide-y-0 md:divide-x-2 divide-line" data-reveal-group>
+    <div class="px-4 md:px-8 py-10 md:py-14" data-reveal-item>
       <p class="eyebrow mb-6">E-mail</p>
-      <a href="mailto:{{ site.email }}" class="text-xl md:text-2xl font-bold uppercase tracking-tighter link break-all">{{ site.email }}</a>
+      <a href="mailto:{{ site.email }}" class="text-xl md:text-2xl font-bold uppercase tracking-tighter hover:text-accent break-all">{{ site.email }}</a>
     </div>
-    <div class="bg-bg p-8 md:p-12" data-reveal-item>
+    <div class="px-4 md:px-8 py-10 md:py-14" data-reveal-item>
       <p class="eyebrow mb-6">Telefon</p>
-      <a href="tel:{{ site.phoneHref }}" class="text-xl md:text-2xl font-bold uppercase tracking-tighter link">{{ site.phone }}</a>
-      <p class="text-sm text-muted-fg mt-3">Po–Pá, 9–17 h</p>
+      <a href="tel:{{ site.phoneHref }}" class="text-xl md:text-2xl font-bold uppercase tracking-tighter hover:text-accent">{{ site.phone }}</a>
+      <p class="text-sm text-muted-fg mt-3 uppercase tracking-widest">Po–Pá, 9–17 h</p>
     </div>
-    <div class="bg-bg p-8 md:p-12" data-reveal-item>
+    <div class="px-4 md:px-8 py-10 md:py-14" data-reveal-item>
       <p class="eyebrow mb-6">Sociální sítě</p>
       <ul class="space-y-2 text-xl md:text-2xl font-bold uppercase tracking-tighter">
-        <li><a href="{{ site.social.instagram }}" rel="noopener" target="_blank" class="link">Instagram</a></li>
-        <li><a href="{{ site.social.facebook }}" rel="noopener" target="_blank" class="link">Facebook</a></li>
-        <li><a href="{{ site.social.linkedin }}" rel="noopener" target="_blank" class="link">LinkedIn</a></li>
+        <li><a href="{{ site.social.instagram }}" rel="noopener" target="_blank" class="hover:text-accent">Instagram ↗</a></li>
+        <li><a href="{{ site.social.facebook }}" rel="noopener" target="_blank" class="hover:text-accent">Facebook ↗</a></li>
+        <li><a href="{{ site.social.linkedin }}" rel="noopener" target="_blank" class="hover:text-accent">LinkedIn ↗</a></li>
       </ul>
     </div>
   </div>

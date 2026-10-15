@@ -5,17 +5,20 @@ layout: layouts/base.njk
 {% set related = caseStudies | where("categorySlug", service.slug) %}
 
 {# ---------- HERO ---------- #}
-<section class="relative overflow-hidden border-b-2 border-line bg-grid">
-  <span class="giant-number absolute -top-10 -right-6 text-[clamp(10rem,30vw,26rem)]" aria-hidden="true" data-drift="right">{{ service.number }}</span>
-  <div class="wrap relative py-20 md:py-32">
-    <p class="eyebrow mb-8" data-reveal>{{ service.number }} / {{ service.label }}</p>
-    <h1 class="display text-balance max-w-[14ch] mb-10" data-reveal="clip">{{ service.title }}</h1>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-      <div class="lg:col-span-7">
-        <p class="text-2xl md:text-4xl font-bold tracking-tight leading-none mb-6" data-reveal data-reveal-delay="0.1">{{ service.tagline }}</p>
+<section class="relative overflow-hidden border-b-2 border-line">
+  <div class="wrap">
+    <div class="flex items-center justify-between gap-4 py-5 text-xs md:text-sm font-bold uppercase tracking-widest text-muted-fg border-b-2 border-line" data-reveal>
+      <span>{{ service.number }} / {{ service.label }}</span>
+      <span class="hidden md:inline">{{ service.tags | join(" · ") }}</span>
+      <span>OP Digital</span>
+    </div>
+    <h1 class="display text-balance py-10 md:py-16" data-reveal="clip">{{ service.title }}</h1>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end border-t-2 border-line py-8 md:py-10">
+      <div class="md:col-span-7">
+        <p class="text-2xl md:text-4xl font-bold tracking-tight leading-none mb-5" data-reveal data-reveal-delay="0.1">{{ service.tagline }}</p>
         <p class="lead max-w-2xl" data-reveal data-reveal-delay="0.2">{{ service.intro }}</p>
       </div>
-      <div class="lg:col-span-5 flex flex-col sm:flex-row gap-4 lg:justify-end" data-reveal data-reveal-delay="0.3">
+      <div class="md:col-span-5 flex flex-col sm:flex-row gap-4 md:justify-end" data-reveal data-reveal-delay="0.3">
         <a href="#kontakt" class="btn btn-primary btn-lg">Pojďme to probrat <span aria-hidden="true">→</span></a>
         <a href="#nabidka" class="btn btn-outline btn-lg">Co děláme <span aria-hidden="true">↓</span></a>
       </div>
@@ -23,29 +26,31 @@ layout: layouts/base.njk
   </div>
 </section>
 
-{# ---------- MARQUEE TAGŮ ---------- #}
-<div class="marquee bg-accent text-accent-fg py-3 md:py-4" style="--marquee-duration: 20s" aria-hidden="true">
+{# ---------- MARQUEE ---------- #}
+<div class="marquee bg-accent text-accent-fg py-4 md:py-6" style="--marquee-duration: 22s" aria-hidden="true">
   {% for copy in [1, 2] %}
-    <ul class="marquee__track gap-8 pr-8 text-xl md:text-3xl font-bold uppercase tracking-tighter">
-      {% for t in service.tags %}<li class="flex items-center gap-8"><span>{{ t }}</span><span class="text-base md:text-xl">✦</span></li>{% endfor %}
-      {% for b in service.benefits %}<li class="flex items-center gap-8"><span>{{ b.title }}</span><span class="text-base md:text-xl">✦</span></li>{% endfor %}
+    <ul class="marquee__track gap-10 pr-10 text-2xl md:text-5xl font-bold uppercase tracking-tighter">
+      {% for t in service.tags %}<li class="flex items-center gap-10"><span>{{ t }}</span><span class="text-xl md:text-3xl">✦</span></li>{% endfor %}
+      {% for b in service.benefits %}<li class="flex items-center gap-10"><span>{{ b.title }}</span><span class="text-xl md:text-3xl">✦</span></li>{% endfor %}
     </ul>
   {% endfor %}
 </div>
 
 {# ---------- PROČ ---------- #}
-<section class="section">
+<section class="py-20 md:py-32">
   <div class="wrap">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-20">
-      <h2 class="headline text-balance" data-reveal="clip">Proč to dává smysl<span class="text-accent">.</span></h2>
-      <p class="lead max-w-md" data-reveal data-reveal-delay="0.1">{{ service.text }}</p>
-    </div>
-    <ul class="hairline-grid grid-cols-1 md:grid-cols-2" data-reveal-group>
+    <p class="eyebrow mb-8" data-reveal>Proč to dává smysl</p>
+    <p class="headline max-w-[16ch] text-balance mb-12 md:mb-20" data-words>
+      {% for w in service.text.split(" ") %}<span class="word">{{ w }}</span>{% if not loop.last %} {% endif %}{% endfor %}
+    </p>
+    <ul class="hairline-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" data-reveal-group>
       {% for b in service.benefits %}
-        <li class="group relative overflow-hidden p-8 md:p-12 min-h-[40vh] flex flex-col justify-end hover:bg-accent hover:text-accent-fg transition-colors duration-300" data-reveal-item>
-          <span class="giant-number absolute -top-6 -right-4 group-hover:text-accent-fg/10 transition-colors duration-300" aria-hidden="true">{{ loop.index | pad }}</span>
-          <h3 class="relative text-3xl md:text-5xl font-bold uppercase tracking-tighter leading-none mb-4 transition-transform duration-300 group-hover:translate-x-4">{{ b.title }}</h3>
-          <p class="relative text-lg md:text-xl leading-tight text-muted-fg group-hover:text-accent-fg/80 max-w-md transition-colors duration-300">{{ b.text }}</p>
+        <li class="group p-6 md:p-8 flex flex-col justify-between min-h-[50vh] hover:bg-accent hover:text-accent-fg transition-colors duration-300" data-reveal-item>
+          <span class="text-[clamp(5rem,12vw,10rem)] font-bold tracking-tighter leading-[0.8] text-outline group-hover:text-accent-fg group-hover:[-webkit-text-stroke:0] transition-colors duration-300" aria-hidden="true">{{ loop.index | pad }}</span>
+          <div class="mt-10">
+            <h3 class="text-2xl md:text-3xl font-bold uppercase tracking-tighter leading-none mb-4 text-balance">{{ b.title }}</h3>
+            <p class="text-base md:text-lg leading-tight text-muted-fg group-hover:text-accent-fg/80 transition-colors duration-300">{{ b.text }}</p>
+          </div>
         </li>
       {% endfor %}
     </ul>
@@ -53,56 +58,43 @@ layout: layouts/base.njk
 </section>
 
 {# ---------- NABÍDKA ---------- #}
-<section id="nabidka" class="section">
-  <div class="wrap">
-    <h2 class="headline text-balance mb-12 md:mb-20" data-reveal="clip">Co pro vás uděláme<span class="text-accent">.</span></h2>
-    <ol class="border-t-2 border-line" data-reveal-group>
-      {% for o in service.offer %}
-        <li class="group grid grid-cols-12 gap-4 md:gap-8 items-start border-b-2 border-line py-8 md:py-12 hover:border-accent transition-colors duration-300" data-reveal-item>
-          <span class="col-span-12 md:col-span-2 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none text-muted group-hover:text-accent transition-colors duration-300" aria-hidden="true">{{ loop.index | pad }}</span>
-          <h3 class="col-span-12 md:col-span-5 text-2xl md:text-4xl lg:text-5xl font-bold uppercase tracking-tighter leading-none transition-transform duration-300 md:group-hover:translate-x-6">{{ o.title }}</h3>
-          <p class="col-span-12 md:col-span-5 text-lg md:text-xl leading-tight text-muted-fg">{{ o.text }}</p>
-        </li>
-      {% endfor %}
-    </ol>
+<section id="nabidka" class="border-b-2 border-line">
+  <div class="wrap pb-8 md:pb-12 pt-4">
+    <p class="eyebrow" data-reveal>Co pro vás uděláme</p>
+  </div>
+  <div data-reveal-group>
+    {% for o in service.offer %}
+      <div class="row-flood group" data-reveal-item tabindex="0">
+        <div class="wrap grid grid-cols-12 gap-x-4 md:gap-x-8 py-10 md:py-14 items-start">
+          <span class="col-span-12 md:col-span-2 flood-muted text-xl md:text-3xl font-bold tracking-tighter text-muted-fg leading-none mb-4 md:mb-0 md:pt-2" aria-hidden="true">{{ loop.index | pad }}</span>
+          <h3 class="col-span-12 md:col-span-5 flood-fg flood-shift text-[clamp(1.75rem,4.5vw,4.25rem)] font-bold uppercase tracking-tighter leading-[0.9] text-balance">{{ o.title }}</h3>
+          <p class="col-span-12 md:col-span-5 flood-muted text-lg md:text-xl leading-tight text-muted-fg mt-4 md:mt-2">{{ o.text }}</p>
+        </div>
+      </div>
+    {% endfor %}
   </div>
 </section>
 
 {# ---------- SOUVISEJÍCÍ PROJEKTY ---------- #}
 {% if related.length %}
-<section class="section">
-  <div class="wrap">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-20">
-      <h2 class="headline text-balance" data-reveal="clip">Jak to vypadá v praxi<span class="text-accent">.</span></h2>
-      <a href="/pripadove-studie/" class="btn btn-outline" data-reveal>Všechny případové studie <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" data-reveal-group>
-      {% for cs in related %}
-        {% if loop.index <= 2 %}
-          {% include "partials/case-card.njk" %}
-        {% endif %}
-      {% endfor %}
-    </div>
+<section class="border-b-2 border-line">
+  <div class="wrap py-16 md:py-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <h2 class="headline text-balance" data-reveal="clip">Jak to vypadá v praxi<span class="text-accent">.</span></h2>
+    <a href="/pripadove-studie/" class="btn btn-ghost px-0 text-xl" data-reveal>Všechny projekty <span aria-hidden="true">→</span></a>
+  </div>
+  <div data-reveal-group>
+    {% for cs in related %}{% if loop.index <= 3 %}{% set idx = loop.index %}{% include "partials/case-row.njk" %}{% endif %}{% endfor %}
   </div>
 </section>
 {% endif %}
 
-{# ---------- POSTUP (kompaktně) ---------- #}
-<section class="section">
+{# ---------- POSTUP ---------- #}
+<section class="py-20 md:py-32">
   <div class="wrap">
     <p class="eyebrow mb-8" data-reveal>Jak spolupráce probíhá</p>
     <h2 class="headline text-balance mb-12 md:mb-20" data-reveal="clip">Od nápadu k hotové věci<span class="text-accent">.</span></h2>
-    <ol class="hairline-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" data-reveal-group>
-      {% for step in process %}
-        <li class="p-8 md:p-10 min-h-72 flex flex-col justify-between group hover:bg-accent hover:text-accent-fg transition-colors duration-300" data-reveal-item>
-          <span class="text-6xl md:text-7xl font-bold tracking-tighter leading-none text-muted group-hover:text-accent-fg/30 transition-colors duration-300" aria-hidden="true">{{ loop.index | pad }}</span>
-          <div class="mt-10">
-            <h3 class="text-2xl md:text-3xl font-bold uppercase tracking-tighter leading-none mb-3">{{ step.title }}</h3>
-            <p class="text-base md:text-lg leading-tight text-muted-fg group-hover:text-accent-fg/80 transition-colors duration-300">{{ step.text }}</p>
-          </div>
-        </li>
-      {% endfor %}
-    </ol>
+    {% set processCompact = true %}
+    {% include "partials/process.njk" %}
   </div>
 </section>
 
@@ -111,13 +103,13 @@ layout: layouts/base.njk
   <div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-12">
     <div class="lg:col-span-4">
       <p class="eyebrow mb-8" data-reveal>Časté otázky</p>
-      <h2 class="headline text-balance lg:sticky lg:top-40" data-reveal="clip">Na co se ptáte<span class="text-accent">?</span></h2>
+      <h2 class="headline text-balance lg:sticky lg:top-32" data-reveal="clip">Na co se ptáte<span class="text-accent">?</span></h2>
     </div>
     <div class="lg:col-span-8 border-t-2 border-line" x-data="accordion" data-reveal>
       {% for f in service.faq %}
         <div class="border-b-2 border-line">
           <h3>
-            <button type="button" class="flex w-full items-start justify-between gap-6 py-6 md:py-8 text-left text-xl md:text-3xl font-bold uppercase tracking-tighter leading-none hover:text-accent transition-colors" :aria-expanded="active === {{ loop.index0 }}" aria-controls="faq-{{ loop.index0 }}" @click="toggle({{ loop.index0 }})">
+            <button type="button" class="flex w-full items-start justify-between gap-6 py-6 md:py-8 text-left text-xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tighter leading-none hover:text-accent transition-colors" :aria-expanded="active === {{ loop.index0 }}" aria-controls="faq-{{ loop.index0 }}" @click="toggle({{ loop.index0 }})">
               <span>{{ f.q }}</span>
               <span class="shrink-0 text-accent transition-transform duration-300" :class="active === {{ loop.index0 }} && 'rotate-45'" aria-hidden="true">+</span>
             </button>
@@ -131,6 +123,7 @@ layout: layouts/base.njk
   </div>
 </section>
 
-{% set marqueeSpeed = 90 %}{% set marqueeInvert = true %}
+{% set marqueeSpeed = 70 %}{% set marqueeInvert = true %}
 {% include "partials/marquee-clients.njk" %}
+{% set contactNumber = false %}
 {% include "partials/contact.njk" %}

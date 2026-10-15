@@ -1,22 +1,19 @@
-{#
-  Marquee s klienty. Parametry přes `set` před includem:
-  - marqueeSpeed: délka animace v sekundách (menší = rychlejší)
-  - marqueeInvert: true = oranžový pás s černým textem
-#}
+{# Marquee klientů. Proměnné: marqueeSpeed (s), marqueeInvert (oranžový pás), marqueeOutline (obrysový text), marqueeReverse #}
 {% set speed = marqueeSpeed or 40 %}
-<div class="marquee {% if marqueeInvert %}bg-accent text-accent-fg{% else %}border-y-2 border-line text-fg{% endif %} py-4 md:py-6" style="--marquee-duration: {{ speed }}s" role="marquee" aria-label="Firmy, které nám důvěřují">
+<div class="marquee {% if marqueeReverse %}marquee--reverse{% endif %} {% if marqueeInvert %}bg-accent text-accent-fg{% else %}bg-bg text-fg{% endif %} py-5 md:py-8" style="--marquee-duration: {{ speed }}s" role="marquee" aria-label="Firmy, které nám důvěřují">
   {% for copy in [1, 2] %}
     <ul class="marquee__track gap-10 md:gap-16 pr-10 md:pr-16" {% if copy == 2 %}aria-hidden="true"{% endif %}>
       {% for c in clients %}
-        <li class="flex items-center gap-10 md:gap-16 text-2xl md:text-4xl lg:text-5xl font-bold uppercase tracking-tighter whitespace-nowrap">
+        <li class="flex items-center gap-10 md:gap-16 text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter leading-none whitespace-nowrap">
           {% if c.logo %}
-            <img src="{{ c.logo }}" alt="{{ c.name }}" class="h-8 md:h-12 w-auto {% if not marqueeInvert %}invert{% endif %}" loading="lazy">
+            <img src="{{ c.logo }}" alt="{{ c.name }}" class="h-10 md:h-14 w-auto {% if not marqueeInvert %}invert{% endif %}" loading="lazy">
           {% else %}
-            <span>{{ c.name }}</span>
+            <span class="{% if marqueeOutline %}text-outline-fg{% endif %}">{{ c.name }}</span>
           {% endif %}
-          <span class="{% if marqueeInvert %}text-accent-fg/50{% else %}text-accent{% endif %} text-xl md:text-3xl" aria-hidden="true">✦</span>
+          <span class="{% if marqueeInvert %}text-accent-fg/50{% else %}text-accent{% endif %} text-2xl md:text-4xl" aria-hidden="true">✦</span>
         </li>
       {% endfor %}
     </ul>
   {% endfor %}
 </div>
+{% set marqueeReverse = false %}{% set marqueeOutline = false %}

@@ -1,0 +1,17 @@
+{# Hero podstránky: eyebrow, obří titulek, spodní řádek s textem a CTA. Proměnné: heroEyebrow, heroTitle (HTML), heroLead, heroCta (bool) #}
+<section class="relative overflow-hidden border-b-2 border-line">
+  <div class="wrap">
+    <p class="eyebrow py-6 border-b-2 border-line" data-reveal>{{ heroEyebrow }}</p>
+    <h1 class="display text-balance py-10 md:py-16 max-w-[12ch]" data-reveal="clip">{{ heroTitle | safe }}</h1>
+    {% if heroLead %}
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end border-t-2 border-line py-8 md:py-10">
+      <p class="lead md:col-span-7 max-w-2xl" data-reveal data-reveal-delay="0.1">{{ heroLead }}</p>
+      {% if heroCta %}
+      <div class="md:col-span-5 flex flex-col sm:flex-row gap-4 md:justify-end" data-reveal data-reveal-delay="0.2">
+        <a href="{{ heroCtaUrl or '/kontakt/' }}" class="btn btn-primary btn-lg">{{ heroCtaLabel or "Pojďme to probrat" }} <span aria-hidden="true">→</span></a>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>

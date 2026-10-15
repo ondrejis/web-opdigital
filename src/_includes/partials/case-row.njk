@@ -1,0 +1,21 @@
+{# Řádek případové studie – očekává `cs` a index `idx` #}
+<a href="/pripadove-studie/{{ cs.slug }}/" class="row-flood group block" data-reveal-item>
+  <div class="wrap grid grid-cols-12 gap-x-4 md:gap-x-8 py-10 md:py-14 items-end">
+    <span class="col-span-12 md:col-span-2 flood-muted text-xl md:text-3xl font-bold tracking-tighter text-muted-fg leading-none mb-4 md:mb-0 md:self-start md:pt-2" aria-hidden="true">{{ idx | pad }}</span>
+    <div class="col-span-12 md:col-span-7">
+      <p class="eyebrow flood-muted mb-5">{{ cs.category }} · {{ cs.client }}</p>
+      <h3 class="flood-fg flood-shift text-[clamp(1.75rem,4.5vw,4.25rem)] font-bold uppercase tracking-tighter leading-[0.9] text-balance">{{ cs.title }}</h3>
+      <p class="flood-muted text-base md:text-xl leading-tight text-muted-fg mt-4 max-w-xl">{{ cs.summary }}</p>
+    </div>
+    <div class="col-span-12 md:col-span-3 flex md:justify-end gap-8 mt-6 md:mt-0">
+      {% if cs.stats.length %}
+        <div class="md:text-right">
+          <span class="flood-fg block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none">{{ cs.stats[0].value }}{{ cs.stats[0].suffix }}</span>
+          <span class="flood-muted block text-xs md:text-sm font-bold uppercase tracking-widest text-muted-fg mt-2">{{ cs.stats[0].label }}</span>
+        </div>
+      {% else %}
+        <span class="flood-fg text-4xl md:text-6xl font-bold leading-none transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2" aria-hidden="true">↗</span>
+      {% endif %}
+    </div>
+  </div>
+</a>

@@ -13,32 +13,48 @@ eleventyComputed:
 {% set others = caseStudies | exclude("slug", cs.slug) %}
 {% set next = others[0] %}
 
-<section class="relative overflow-hidden border-b-2 border-line bg-grid">
-  <span class="pointer-events-none select-none absolute -top-6 -right-4 text-[clamp(6rem,20vw,22rem)] font-bold uppercase tracking-tighter text-outline leading-none hidden md:block" aria-hidden="true" data-drift="right">{{ cs.client }}</span>
-  <div class="wrap relative py-20 md:py-32">
-    <p class="eyebrow mb-8" data-reveal><a href="/pripadove-studie/" class="hover:text-accent">Případové studie</a> · {{ cs.category }} · {{ cs.client }}</p>
-    <h1 class="display text-balance max-w-[14ch]" data-reveal="clip">{{ cs.title }}</h1>
-    <p class="lead max-w-2xl mt-10" data-reveal data-reveal-delay="0.1">{{ cs.summary }}</p>
+<section class="relative overflow-hidden border-b-2 border-line">
+  <div class="wrap">
+    <div class="flex items-center justify-between gap-4 py-5 text-xs md:text-sm font-bold uppercase tracking-widest text-muted-fg border-b-2 border-line" data-reveal>
+      <a href="/pripadove-studie/" class="hover:text-accent">← Všechny projekty</a>
+      <span>{{ cs.category }}</span>
+      <span>{{ cs.client }}</span>
+    </div>
+    <h1 class="display text-balance py-10 md:py-16" data-reveal="clip">{{ cs.title }}</h1>
+    <div class="border-t-2 border-line py-8 md:py-10">
+      <p class="lead max-w-2xl" data-reveal data-reveal-delay="0.1">{{ cs.summary }}</p>
+    </div>
   </div>
 </section>
 
 {% if cs.stats.length %}
-<section class="border-b-2 border-line">
-  <ul class="wrap grid grid-cols-1 {% if cs.stats.length == 2 %}sm:grid-cols-2{% elif cs.stats.length >= 3 %}sm:grid-cols-3{% endif %} divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-line" data-reveal-group>
+<section class="border-b-2 border-line bg-accent text-accent-fg">
+  <ul class="wrap grid grid-cols-1 {% if cs.stats.length == 2 %}sm:grid-cols-2{% elif cs.stats.length >= 3 %}sm:grid-cols-3{% endif %} divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-accent-fg/30" data-reveal-group>
     {% for st in cs.stats %}
       <li class="py-12 md:py-20 sm:px-8 first:pl-0" data-reveal-item x-data="counter({{ st.value }})" x-intersect.once="start()">
-        <span class="block text-[clamp(4rem,12vw,11rem)] font-bold tracking-tighter leading-none"><span x-text="value">{{ st.value }}</span>{{ st.suffix }}</span>
-        <span class="eyebrow mt-4">{{ st.label }}</span>
+        <span class="block text-[clamp(5rem,14vw,14rem)] font-bold tracking-tighter leading-none"><span x-text="value">{{ st.value }}</span>{{ st.suffix }}</span>
+        <span class="block mt-4 text-sm md:text-base font-bold uppercase tracking-widest">{{ st.label }}</span>
       </li>
     {% endfor %}
   </ul>
 </section>
 {% endif %}
 
+<section class="border-b-2 border-line" data-reveal-group>
+  {% for block in [["01", "Zadání", cs.brief], ["02", "Řešení", cs.solution], ["03", "Výsledek", cs.result]] %}
+    <div class="row-flood group" data-reveal-item tabindex="0">
+      <div class="wrap grid grid-cols-12 gap-x-4 md:gap-x-8 py-12 md:py-20 items-start">
+        <span class="col-span-12 md:col-span-2 flood-muted text-xl md:text-3xl font-bold tracking-tighter text-muted-fg leading-none mb-4 md:mb-0 md:pt-2" aria-hidden="true">{{ block[0] }}</span>
+        <h2 class="col-span-12 md:col-span-4 flood-fg flood-shift headline">{{ block[1] }}<span class="text-accent group-hover:text-accent-fg">.</span></h2>
+        <p class="col-span-12 md:col-span-6 flood-muted text-lg md:text-2xl leading-tight text-muted-fg mt-6 md:mt-3 max-w-2xl">{{ block[2] }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
 <section class="py-20 md:py-32">
   <div class="wrap">
-    {# Screenshot / placeholder #}
-    <div class="relative aspect-[21/9] border-2 border-line bg-muted-deep bg-grid mb-20 md:mb-32 overflow-hidden" data-reveal>
+    <div class="relative aspect-[21/9] border-2 border-line bg-muted-deep bg-grid overflow-hidden" data-reveal>
       {% if cs.screenshot %}
         <img src="{{ cs.screenshot }}" alt="Náhled webu {{ cs.client }}" class="absolute inset-0 h-full w-full object-cover object-top">
       {% else %}
@@ -46,29 +62,13 @@ eleventyComputed:
         <span class="absolute bottom-6 left-6 eyebrow">Ukázka projektu</span>
       {% endif %}
     </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-px bg-line border-2 border-line" data-reveal-group>
-      {% for block in [["01", "Zadání", cs.brief], ["02", "Řešení", cs.solution], ["03", "Výsledek", cs.result]] %}
-        <article class="bg-bg p-8 md:p-12 relative overflow-hidden group hover:bg-accent hover:text-accent-fg transition-colors duration-300" data-reveal-item>
-          <span class="giant-number absolute -top-6 -right-4 group-hover:text-accent-fg/10 transition-colors duration-300" aria-hidden="true">{{ block[0] }}</span>
-          <p class="eyebrow mb-16 relative">{{ block[0] }} / {{ block[1] }}</p>
-          <h2 class="relative text-3xl md:text-5xl font-bold uppercase tracking-tighter leading-none mb-6">{{ block[1] }}<span class="text-accent group-hover:text-accent-fg">.</span></h2>
-          <p class="relative text-lg md:text-xl leading-tight text-muted-fg group-hover:text-accent-fg/80 transition-colors duration-300">{{ block[2] }}</p>
-        </article>
-      {% endfor %}
-    </div>
   </div>
 </section>
 
 {% if next %}
-<section class="section">
-  <div class="wrap">
-    <p class="eyebrow mb-8" data-reveal>Další projekt</p>
-    <a href="/pripadove-studie/{{ next.slug }}/" class="group block" data-reveal>
-      <span class="block headline text-balance group-hover:text-accent transition-colors duration-300">{{ next.title }} <span class="inline-block transition-transform duration-300 group-hover:translate-x-4" aria-hidden="true">→</span></span>
-      <span class="eyebrow mt-6">{{ next.category }} · {{ next.client }}</span>
-    </a>
-  </div>
+<section class="border-t-2 border-line">
+  <div class="wrap py-8"><p class="eyebrow" data-reveal>Další projekt</p></div>
+  <div data-reveal-group>{% set cs = next %}{% set idx = "→" %}{% include "partials/case-row.njk" %}</div>
 </section>
 {% endif %}
 

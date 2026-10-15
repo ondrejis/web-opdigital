@@ -15,15 +15,53 @@
     "linkedin": "https://www.linkedin.com/company/opdigital"
   },
   "navMain": [
-    { "label": "Systémy", "url": "/systemy/" },
-    { "label": "Weby", "url": "/weby/" },
-    { "label": "Kampaně", "url": "/kampane/" }
+    {
+      "label": "Systémy",
+      "url": "/systemy/"
+    },
+    {
+      "label": "Weby",
+      "url": "/weby/"
+    },
+    {
+      "label": "Kampaně",
+      "url": "/kampane/"
+    }
   ],
   "navSecondary": [
-    { "label": "Případové studie", "url": "/pripadove-studie/" },
-    { "label": "Reference", "url": "/reference/" },
-    { "label": "O nás", "url": "/o-nas/" },
-    { "label": "Kontakt", "url": "/kontakt/" }
+    {
+      "label": "Projekty",
+      "url": "/pripadove-studie/"
+    },
+    {
+      "label": "O nás",
+      "url": "/o-nas/"
+    },
+    {
+      "label": "Kontakt",
+      "url": "/kontakt/"
+    }
   ],
-  "cta": { "label": "Pojďme to probrat", "url": "/kontakt/" }
+  "cta": {
+    "label": "Pojďme to probrat",
+    "url": "/kontakt/"
+  },
+  "navFooter": [
+    {
+      "label": "Případové studie",
+      "url": "/pripadove-studie/"
+    },
+    {
+      "label": "Reference",
+      "url": "/reference/"
+    },
+    {
+      "label": "O nás",
+      "url": "/o-nas/"
+    },
+    {
+      "label": "Kontakt",
+      "url": "/kontakt/"
+    }
+  ]
 }

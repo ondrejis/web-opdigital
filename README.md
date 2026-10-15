@@ -4,7 +4,7 @@ Nový firemní web OP Digital. Statický, lehký, bez frameworku na klientu.
 
 **Stack:** [Eleventy](https://www.11ty.dev/) (šablony Nunjucks) · [Tailwind CSS v4](https://tailwindcss.com/) · [Alpine.js](https://alpinejs.dev/) · [Motion](https://motion.dev/) (scroll/reveal animace) · esbuild (bundlování JS).
 
-Výsledek v `dist/` je čistě HTML + 1× CSS (~45 kB) + 1× JS (~80 kB min, ~29 kB gzip) + 2 fonty. Žádné externí requesty (fonty jsou self-hosted).
+Výsledek v `dist/` je čistě HTML + 1× CSS (~45 kB) + 1× JS (~80 kB min, ~29 kB gzip) + 2 fonty. Žádné externí requesty (font DM Sans je self-hosted).
 
 ## Spuštění
 
@@ -23,7 +23,7 @@ src/
   _data/            obsah webu v JSON (služby, případovky, klienti, tým, postup, kontakty)
   _includes/
     layouts/        base.njk (kostra stránky), service.njk (šablona služby)
-    partials/       header, footer, kontakt, marquee klientů, karta případovky, tým, cookies, CTA pás
+    partials/       header, footer, kontakt, marquee klientů, řádek případovky, hero podstránky, postup, tým, cookies, CTA pás
   styles/main.css   design tokeny (@theme) + komponenty (.btn, .card-flood, .input-xl, .marquee…)
   scripts/main.js   Alpine komponenty (rotující titulek, menu, formulář, cookies, čítače, akordeon) + Motion animace
   assets/           fonty, loga, SVG vizuály do pozadí (noise, grid, obrys loga), OG obrázek
@@ -34,7 +34,7 @@ src/
 
 | URL | Obsah |
 | --- | --- |
-| `/` | Homepage: hero s rotujícím titulkem, služby, projekty, reference, postup (sticky karty), tým, kontakt |
+| `/` | Homepage: hero s rotujícím titulkem, manifest slovo po slově, služby jako typografický seznam, projekty jako sticky panely, postup, reference, tým, kontakt |
 | `/systemy/`, `/weby/`, `/kampane/` | Detail služby (obsah z `services.json`) |
 | `/pripadove-studie/` + `/pripadove-studie/<slug>/` | Přehled a detaily (obsah z `caseStudies.json`) |
 | `/reference/` | Seznam klientů |
@@ -55,4 +55,4 @@ Veškeré texty a seznamy jsou v `src/_data/*.json`, šablony se nemusí sahat.
 
 Styl „Kinetic Typography“ v firemních barvách: akcent `#FD5B38` (oranžová z loga), pozadí `#09090B`, text `#FAFAFA`, linky `#3F3F46`. Vše uppercase v display velikostech, ostré rohy, 2px rámečky, žádné stíny ani gradienty. Tokeny jsou v `src/styles/main.css` v bloku `@theme` – změna barvy na jednom místě se propíše všude.
 
-Pohyb: nekonečné CSS marquee, reveal při scrollu (Motion `inView`), paralaxa hero, sticky karty postupu, inverze barev na hover. Vše respektuje `prefers-reduced-motion`.
+Pohyb: nekonečné CSS marquee (vodorovné i svislé), reveal při scrollu (Motion `inView`), manifest rozsvěcující slova podle scrollu, paralaxa hero, sticky panely projektů, inverze řádků a dlaždic do oranžové na hover. Vše respektuje `prefers-reduced-motion`.

@@ -4,20 +4,17 @@ permalink: /o-nas/
 title: "O nás"
 description: "OP Digital jsme Ondřej a Patrik. Stavíme systémy, weby a kampaně na míru a za každým projektem stojíme osobně."
 ---
-<section class="relative overflow-hidden border-b-2 border-line bg-grid">
-  <img src="/assets/img/bg/mark-outline.svg" alt="" aria-hidden="true" class="pointer-events-none absolute -right-[18vw] -top-[6vw] w-[60vw] max-w-none opacity-80 hidden md:block" data-drift="right">
-  <div class="wrap relative py-20 md:py-32">
-    <p class="eyebrow mb-8" data-reveal>O nás</p>
-    <h1 class="display text-balance mb-10" data-reveal="clip">Dva lidi<span class="text-accent">.</span> Žádná agenturní omáčka<span class="text-accent">.</span></h1>
-    <p class="lead max-w-2xl" data-reveal data-reveal-delay="0.1">OP Digital jsme Ondřej a Patrik. Nemáme account manažery ani oddělení. Máte přímý kontakt na lidi, kteří váš projekt vymýšlejí a staví. A když se něco nepovede, taky to slyšíte od nás.</p>
-  </div>
-</section>
+{% set heroEyebrow = "O nás / Ondřej & Patrik" %}
+{% set heroTitle = 'Dva lidi<span class="text-accent">.</span> Žádná agenturní omáčka<span class="text-accent">.</span>' %}
+{% set heroLead = "OP Digital jsme Ondřej a Patrik. Nemáme account manažery ani oddělení. Máte přímý kontakt na lidi, kteří váš projekt vymýšlejí a staví. A když se něco nepovede, taky to slyšíte od nás." %}
+{% set heroCta = true %}
+{% include "partials/page-hero.njk" %}
 
-<div class="marquee bg-accent text-accent-fg py-3 md:py-4" style="--marquee-duration: 24s" aria-hidden="true">
+<div class="marquee bg-accent text-accent-fg py-4 md:py-6" style="--marquee-duration: 24s" aria-hidden="true">
   {% for copy in [1, 2] %}
-    <ul class="marquee__track gap-8 pr-8 text-xl md:text-3xl font-bold uppercase tracking-tighter">
+    <ul class="marquee__track gap-10 pr-10 text-2xl md:text-5xl font-bold uppercase tracking-tighter">
       {% for w in ["27+ webů za rok", "Systémy na míru", "Poptávky, ne lajky", "Plzeň a celá ČR", "Přímý kontakt", "Bez agenturní omáčky"] %}
-        <li class="flex items-center gap-8"><span>{{ w }}</span><span class="text-base md:text-xl">✦</span></li>
+        <li class="flex items-center gap-10"><span>{{ w }}</span><span class="text-xl md:text-3xl">✦</span></li>
       {% endfor %}
     </ul>
   {% endfor %}
@@ -25,36 +22,46 @@ description: "OP Digital jsme Ondřej a Patrik. Stavíme systémy, weby a kampan
 
 {% include "partials/team.njk" %}
 
-<section class="section">
-  <div class="wrap">
+<section class="border-t-2 border-b-2 border-line">
+  <div class="wrap py-16 md:py-24">
     <p class="eyebrow mb-8" data-reveal>Jak pracujeme</p>
-    <h2 class="headline text-balance mb-12 md:mb-20" data-reveal="clip">Tři věci, na kterých trváme<span class="text-accent">.</span></h2>
-    <ol class="hairline-grid grid-cols-1 lg:grid-cols-3" data-reveal-group>
-      {% for v in [
-        ["Mluvíme na rovinu.", "Když něco nedává smysl, řekneme to. Když něco neumíme, řekneme to taky. Raději ztratíme zakázku než vaši důvěru."],
-        ["Měříme výsledky, ne hodiny.", "Web má přinášet poptávky, systém šetřit práci, kampaň vydělávat. Podle toho se hodnotíme."],
-        ["Spuštěním to nekončí.", "Jsme tu i po předání. Rozšiřujeme, upravujeme, hlídáme. Většina klientů s námi spolupracuje roky."]
-      ] %}
-        <li class="group relative overflow-hidden p-8 md:p-12 min-h-[45vh] flex flex-col justify-between hover:bg-accent hover:text-accent-fg transition-colors duration-300" data-reveal-item>
-          <span class="giant-number absolute -top-6 -right-4 group-hover:text-accent-fg/10 transition-colors duration-300" aria-hidden="true">{{ loop.index | pad }}</span>
-          <p class="eyebrow relative">{{ loop.index | pad }} / 03</p>
-          <div class="relative mt-16">
-            <h3 class="text-3xl md:text-5xl font-bold uppercase tracking-tighter leading-none mb-4">{{ v[0] }}</h3>
-            <p class="text-lg md:text-xl leading-tight text-muted-fg group-hover:text-accent-fg/80 transition-colors duration-300">{{ v[1] }}</p>
-          </div>
-        </li>
-      {% endfor %}
-    </ol>
+    <h2 class="headline text-balance" data-reveal="clip">Tři věci, na kterých trváme<span class="text-accent">.</span></h2>
+  </div>
+  <div data-reveal-group>
+    {% for v in [
+      ["Mluvíme na rovinu.", "Když něco nedává smysl, řekneme to. Když něco neumíme, řekneme to taky. Raději ztratíme zakázku než vaši důvěru."],
+      ["Měříme výsledky, ne hodiny.", "Web má přinášet poptávky, systém šetřit práci, kampaň vydělávat. Podle toho se hodnotíme."],
+      ["Spuštěním to nekončí.", "Jsme tu i po předání. Rozšiřujeme, upravujeme, hlídáme. Většina klientů s námi spolupracuje roky."]
+    ] %}
+      <div class="row-flood group" data-reveal-item tabindex="0">
+        <div class="wrap grid grid-cols-12 gap-x-4 md:gap-x-8 py-12 md:py-20 items-start">
+          <span class="col-span-12 md:col-span-2 flood-muted text-xl md:text-3xl font-bold tracking-tighter text-muted-fg leading-none mb-4 md:mb-0 md:pt-2" aria-hidden="true">{{ loop.index | pad }}</span>
+          <h3 class="col-span-12 md:col-span-5 flood-fg flood-shift text-[clamp(1.75rem,4.5vw,4.25rem)] font-bold uppercase tracking-tighter leading-[0.9] text-balance">{{ v[0] }}</h3>
+          <p class="col-span-12 md:col-span-5 flood-muted text-lg md:text-xl leading-tight text-muted-fg mt-4 md:mt-2">{{ v[1] }}</p>
+        </div>
+      </div>
+    {% endfor %}
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap mb-12">
-    <p class="eyebrow mb-8" data-reveal>Reference</p>
-    <h2 class="headline text-balance" data-reveal="clip">Firmy, které nám důvěřují<span class="text-accent">.</span></h2>
+<section class="py-20 md:py-32">
+  <div class="wrap">
+    <p class="eyebrow mb-8" data-reveal>Jak spolupráce probíhá</p>
+    <h2 class="headline text-balance mb-12 md:mb-20" data-reveal="clip">Od nápadu k hotové věci<span class="text-accent">.</span></h2>
+    {% set processCompact = true %}
+    {% include "partials/process.njk" %}
   </div>
-  {% set marqueeSpeed = 60 %}{% set marqueeInvert = false %}
-  {% include "partials/marquee-clients.njk" %}
+</section>
+
+<section class="border-t-2 border-line">
+  <div class="wrap py-16 md:py-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <h2 class="headline text-balance" data-reveal="clip">Důvěřují nám<span class="text-accent">.</span></h2>
+    <a href="/reference/" class="btn btn-ghost px-0 text-xl" data-reveal>Všechny reference <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="border-t-2 border-line">
+    {% set marqueeSpeed = 70 %}{% set marqueeInvert = false %}{% set marqueeOutline = true %}
+    {% include "partials/marquee-clients.njk" %}
+  </div>
 </section>
 
 {% include "partials/cta-band.njk" %}

@@ -164,7 +164,7 @@ if (!reducedMotion) {
         { duration: 0.7, delay, ease: [0.2, 0.8, 0.2, 1] }
       );
     },
-    { margin: "0px 0px -12% 0px" }
+    { margin: "0px 0px -6% 0px" }
   );
 
   // Skupinové (stagger) revealy
@@ -175,8 +175,20 @@ if (!reducedMotion) {
       items.forEach((i) => (i.style.opacity = 0));
       animate(items, { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, delay: stagger(0.08), ease: [0.2, 0.8, 0.2, 1] });
     },
-    { margin: "0px 0px -12% 0px" }
+    { margin: "0px 0px -6% 0px" }
   );
+
+  // Manifest: slova se rozsvěcují podle pozice scrollu
+  document.querySelectorAll("[data-words]").forEach((el) => {
+    const words = el.querySelectorAll(".word");
+    scroll(
+      (progress) => {
+        const on = Math.round(progress * words.length);
+        words.forEach((w, i) => w.classList.toggle("is-on", i < on));
+      },
+      { target: el, offset: ["start 85%", "end 45%"] }
+    );
+  });
 
   // Hero paralaxa: zvětšení + ztmavení při scrollu
   const hero = document.querySelector("[data-hero]");

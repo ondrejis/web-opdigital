@@ -1,25 +1,30 @@
-<section id="tym" class="section relative overflow-hidden">
+<section id="tym" class="section overflow-hidden">
   <div class="wrap">
-    <p class="eyebrow mb-8" data-reveal>Kdo za tím stojí</p>
-    <h2 class="headline text-balance mb-12 md:mb-20" data-reveal="clip">Za každým projektem stojíme my<span class="text-accent">.</span></h2>
+    <p class="eyebrow mb-8" data-reveal>06 / Kdo za tím stojí</p>
+    <h2 class="headline text-balance mb-12 md:mb-20 max-w-[12ch]" data-reveal="clip">Za každým projektem stojíme my<span class="text-accent">.</span></h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" data-reveal-group>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12" data-reveal-group>
       {% for person in team %}
-        <article class="border-2 border-line group" data-reveal-item>
-          <div class="relative aspect-[4/5] md:aspect-[4/4] bg-muted-deep border-b-2 border-line overflow-hidden bg-grid">
+        <article class="group {% if loop.index == 2 %}md:mt-32{% endif %}" data-reveal-item>
+          <div class="relative aspect-[3/4] border-2 border-line bg-muted-deep overflow-hidden bg-grid">
             {% if person.photo %}
-              <img src="{{ person.photo }}" alt="{{ person.name }}" class="absolute inset-0 h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" loading="lazy" width="800" height="800">
+              <img src="{{ person.photo }}" alt="{{ person.name }}" class="absolute inset-0 h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" loading="lazy" width="900" height="1200">
             {% else %}
-              <span class="absolute inset-0 flex items-center justify-center text-[clamp(6rem,22vw,20rem)] font-bold tracking-tighter text-outline leading-none" aria-hidden="true">{{ person.initials }}</span>
-              <span class="absolute bottom-6 left-6 eyebrow">Fotografie</span>
+              <span class="absolute inset-0 flex items-center justify-center text-[clamp(8rem,28vw,24rem)] font-bold tracking-tighter text-outline leading-none" aria-hidden="true">{{ person.initials }}</span>
             {% endif %}
-            <span class="absolute top-6 right-6 h-3 w-3 bg-accent" aria-hidden="true"></span>
+            {# Jméno přes fotku #}
+            <h3 class="absolute inset-x-0 bottom-0 p-5 md:p-8 text-[clamp(2rem,5vw,4.5rem)] font-bold uppercase tracking-tighter leading-[0.85] bg-bg/0">
+              <span class="block">{{ person.name.split(" ")[0] }}</span>
+              <span class="block text-accent">{{ person.name.split(" ")[1] }}</span>
+            </h3>
+            <span class="absolute top-5 right-5 h-3 w-3 bg-accent" aria-hidden="true"></span>
           </div>
-          <div class="p-8 md:p-12">
-            <h3 class="text-3xl md:text-5xl font-bold uppercase tracking-tighter leading-none mb-3">{{ person.name }}</h3>
-            <p class="text-accent font-bold uppercase tracking-tight text-sm md:text-base mb-6">{{ person.role }}</p>
-            <p class="text-lg md:text-xl leading-tight text-muted-fg mb-8 max-w-lg">{{ person.bio }}</p>
-            <ul class="space-y-2 text-base md:text-lg font-medium">
+          <div class="pt-6 md:pt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <p class="eyebrow mb-3">{{ person.role }}</p>
+              <p class="text-base md:text-lg leading-tight text-muted-fg">{{ person.bio }}</p>
+            </div>
+            <ul class="space-y-2 text-base md:text-lg font-bold sm:text-right">
               {% if person.email %}<li><a href="mailto:{{ person.email }}" class="link">{{ person.email }}</a></li>{% endif %}
               {% if person.phone %}<li><a href="tel:{{ person.phoneHref }}" class="link">{{ person.phone }}</a></li>{% endif %}
             </ul>
@@ -29,4 +34,3 @@
     </div>
   </div>
 </section>
-

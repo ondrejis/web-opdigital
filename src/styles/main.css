@@ -1,31 +1,31 @@
 /* ==========================================================================
    OP Digital – design system
-   Styl: Kinetic Typography (brutalistická typografie, pohyb, tvrdé kontrasty)
-   Všechny tokeny jsou centralizované v @theme – komponenty se na ně odkazují.
+   Styl: Kinetic Typography. Typografie je struktura, pohyb je rytmus.
+   Všechny tokeny jsou v @theme – komponenty se na ně odkazují.
    ========================================================================== */
 @import "tailwindcss";
 
-/* --- Fonty (self-hosted, žádné externí requesty kvůli GDPR a rychlosti) --- */
+/* --- Font: DM Sans (variabilní, self-hosted) ------------------------------- */
 @font-face {
-  font-family: "Space Grotesk";
+  font-family: "DM Sans";
   font-style: normal;
-  font-weight: 300 700;
+  font-weight: 300 800;
   font-display: swap;
-  src: url("/assets/fonts/space-grotesk-latin-ext.woff2") format("woff2");
+  src: url("/assets/fonts/dm-sans-latin-ext.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
-  font-family: "Space Grotesk";
+  font-family: "DM Sans";
   font-style: normal;
-  font-weight: 300 700;
+  font-weight: 300 800;
   font-display: swap;
-  src: url("/assets/fonts/space-grotesk-latin.woff2") format("woff2");
+  src: url("/assets/fonts/dm-sans-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /* --- Design tokeny --------------------------------------------------------- */
 @theme {
-  --font-sans: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 
   /* Barvy – firemní oranžová jako jediný akcent */
   --color-bg: #09090b;
@@ -38,12 +38,12 @@
   --color-accent-fg: #09090b;
 
   /* Typografická škála */
-  --text-display: clamp(3rem, 12vw, 14rem);
-  --text-display--line-height: 0.85;
+  --text-display: clamp(3.25rem, 13vw, 15rem);
+  --text-display--line-height: 0.82;
   --text-display--letter-spacing: -0.05em;
-  --text-headline: clamp(2.5rem, 8vw, 6.5rem);
-  --text-headline--line-height: 0.9;
-  --text-headline--letter-spacing: -0.04em;
+  --text-headline: clamp(2.5rem, 8vw, 7rem);
+  --text-headline--line-height: 0.88;
+  --text-headline--letter-spacing: -0.045em;
   --text-title: clamp(1.75rem, 4vw, 3.5rem);
   --text-title--line-height: 0.95;
   --text-title--letter-spacing: -0.03em;
@@ -51,52 +51,33 @@
   --text-giant--line-height: 1;
   --text-giant--letter-spacing: -0.06em;
 
-  /* Rádius – brutalismus, ostré hrany */
   --radius-none: 0px;
   --radius-sm: 2px;
 
-  /* Animace */
   --ease-snap: cubic-bezier(0.2, 0.8, 0.2, 1);
   --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
   --animate-marquee-reverse: marquee-reverse var(--marquee-duration, 40s) linear infinite;
+  --animate-marquee-y: marquee-y var(--marquee-duration, 40s) linear infinite;
   --animate-blink: blink 1s steps(2, start) infinite;
 
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  @keyframes marquee-reverse {
-    from { transform: translateX(-50%); }
-    to { transform: translateX(0); }
-  }
-  @keyframes blink {
-    to { visibility: hidden; }
-  }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes marquee-reverse { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  @keyframes marquee-y { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+  @keyframes blink { to { visibility: hidden; } }
 }
 
 /* --- Základ ---------------------------------------------------------------- */
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-  }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     @apply bg-bg text-fg font-sans antialiased tracking-tight;
-    font-feature-settings: "ss01", "cv01";
+    font-optical-sizing: auto;
   }
-  ::selection {
-    @apply bg-accent text-accent-fg;
-  }
-  :focus-visible {
-    @apply outline-2 outline-offset-4 outline-accent;
-  }
-  [x-cloak] {
-    display: none !important;
-  }
+  ::selection { @apply bg-accent text-accent-fg; }
+  :focus-visible { @apply outline-2 outline-offset-4 outline-accent; }
+  [x-cloak] { display: none !important; }
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
+    html { scroll-behavior: auto; }
     *, ::before, ::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
@@ -107,182 +88,97 @@
 
 /* --- Komponenty ------------------------------------------------------------ */
 @layer components {
-  /* Kontejner – tlačíme obsah ke krajům */
-  .wrap {
-    @apply mx-auto w-full max-w-[95vw] px-4 md:px-8;
-  }
+  .wrap { @apply mx-auto w-full max-w-[95vw] px-4 md:px-8; }
 
   /* Typografie */
-  .display {
-    @apply text-display font-bold uppercase;
-  }
-  .headline {
-    @apply text-headline font-bold uppercase;
-  }
-  .title {
-    @apply text-title font-bold uppercase;
-  }
-  .eyebrow {
-    @apply inline-flex items-center gap-3 text-xs md:text-sm font-bold uppercase tracking-widest text-muted-fg;
-  }
-  .eyebrow::before {
-    content: "";
-    @apply block h-2 w-2 bg-accent;
-  }
-  .lead {
-    @apply text-lg md:text-xl lg:text-2xl leading-tight text-muted-fg;
-  }
-  .giant-number {
-    @apply pointer-events-none select-none text-giant font-bold text-muted-deep;
-  }
+  .display { @apply text-display font-bold uppercase; }
+  .headline { @apply text-headline font-bold uppercase; }
+  .title { @apply text-title font-bold uppercase; }
+  .eyebrow { @apply flex items-center gap-3 text-xs md:text-sm font-bold uppercase tracking-widest text-muted-fg; }
+  .eyebrow::before { content: ""; @apply block h-2 w-2 shrink-0 bg-accent; }
+  .lead { @apply text-lg md:text-xl lg:text-2xl leading-tight text-muted-fg; }
+  .giant-number { @apply pointer-events-none select-none text-giant font-bold text-muted-deep; }
 
   /* Tlačítka */
   .btn {
     @apply inline-flex h-14 items-center justify-center gap-3 px-8 text-base md:text-lg font-bold uppercase tracking-tighter whitespace-nowrap rounded-none transition-all duration-200 ease-(--ease-snap) disabled:pointer-events-none disabled:opacity-50;
   }
-  .btn-lg {
-    @apply h-20 px-12 text-xl md:text-2xl;
-  }
-  .btn-sm {
-    @apply h-10 px-4 text-sm;
-  }
-  .btn-primary {
-    @apply bg-accent text-accent-fg hover:scale-105 active:scale-95;
-  }
-  .btn-outline {
-    @apply border-2 border-line text-fg hover:border-fg hover:bg-fg hover:text-bg active:scale-95;
-  }
-  .btn-ghost {
-    @apply text-fg hover:text-accent;
-  }
-  .btn-invert {
-    @apply bg-fg text-bg hover:scale-105 active:scale-95;
-  }
+  .btn-lg { @apply h-20 px-12 text-xl md:text-2xl; }
+  .btn-sm { @apply h-10 px-4 text-sm; }
+  .btn-primary { @apply bg-accent text-accent-fg hover:scale-105 active:scale-95; }
+  .btn-outline { @apply border-2 border-line text-fg hover:border-fg hover:bg-fg hover:text-bg active:scale-95; }
+  .btn-ghost { @apply text-fg hover:text-accent; }
+  .btn-invert { @apply bg-fg text-bg hover:scale-105 active:scale-95; }
 
-  /* Karta s inverzí barev na hover (celá karta "zaplaví" oranžovou) */
-  .card {
-    @apply relative overflow-hidden border-2 border-line bg-bg p-8 md:p-12 transition-colors duration-300;
+  /* Řádek, který při hoveru zaplaví oranžová (služby, nabídka, FAQ) */
+  .row-flood {
+    @apply relative overflow-hidden border-t-2 border-line transition-colors duration-300 hover:bg-accent hover:border-accent focus-within:bg-accent;
   }
-  .card-flood {
-    @apply relative overflow-hidden border-2 border-line bg-bg p-8 md:p-12 transition-colors duration-300 hover:border-accent hover:bg-accent focus-within:border-accent;
-  }
-  .card-flood .card-title { @apply text-fg transition-colors duration-300; }
-  .card-flood .card-text { @apply text-muted-fg transition-colors duration-300; }
-  .card-flood .card-number { @apply text-muted-deep transition-colors duration-300; }
-  .card-flood .card-tag { @apply border-line text-muted-fg transition-colors duration-300; }
-  .card-flood:hover .card-title,
-  .card-flood:hover .card-text,
-  .card-flood:hover .card-tag,
-  .card-flood:hover .eyebrow { @apply text-accent-fg; }
-  .card-flood:hover .card-tag { @apply border-accent-fg/40; }
-  .card-flood:hover .card-number { color: rgb(0 0 0 / 0.12); }
-  .card-flood:hover .eyebrow::before { @apply bg-accent-fg; }
+  .row-flood .flood-fg { @apply transition-colors duration-300; }
+  .row-flood:hover .flood-fg,
+  .row-flood:focus-within .flood-fg { @apply text-accent-fg; }
+  .row-flood:hover .flood-muted,
+  .row-flood:focus-within .flood-muted { color: rgb(9 9 11 / 0.7); }
+  .row-flood:hover .eyebrow::before { @apply bg-accent-fg; }
+  .row-flood:hover .giant-number { color: rgb(0 0 0 / 0.12); }
+  .row-flood .flood-reveal { @apply transition-all duration-300 md:opacity-0 md:translate-y-4; }
+  .row-flood:hover .flood-reveal,
+  .row-flood:focus-within .flood-reveal { @apply opacity-100 translate-y-0; }
+  .row-flood .flood-shift { @apply transition-transform duration-300; }
+  .row-flood:hover .flood-shift { @apply md:translate-x-8; }
 
   /* Štítek */
-  .tag {
-    @apply inline-block border px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-widest;
-  }
+  .tag { @apply inline-block border px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-widest; }
 
   /* Formulář – obří podtržené inputy */
-  .field {
-    @apply block w-full;
-  }
-  .field-label {
-    @apply mb-2 block text-xs md:text-sm font-bold uppercase tracking-widest text-muted-fg;
-  }
+  .field-label { @apply mb-2 block text-xs md:text-sm font-bold uppercase tracking-widest text-muted-fg; }
   .input-xl {
     @apply block h-20 md:h-24 w-full rounded-none border-0 border-b-2 border-line bg-transparent px-0 text-2xl md:text-4xl font-bold uppercase tracking-tighter text-fg placeholder:text-muted focus:border-accent focus:outline-none;
   }
-  textarea.input-xl {
-    @apply h-auto min-h-32 resize-none py-4 leading-tight;
-  }
+  textarea.input-xl { @apply h-auto min-h-32 resize-none py-4 leading-tight; }
 
-  /* Marquee – čistě CSS, dvojitý obsah, bez gradientu na okrajích */
-  .marquee {
-    @apply flex w-full overflow-hidden whitespace-nowrap;
-    mask: none;
-  }
-  .marquee__track {
-    @apply flex shrink-0 items-center animate-marquee will-change-transform;
-  }
-  .marquee--reverse .marquee__track {
-    @apply animate-marquee-reverse;
-  }
-  .marquee:hover .marquee__track {
-    /* Záměrně NEpauzujeme – pohyb je součástí stylu. */
-    animation-play-state: running;
-  }
+  /* Marquee – čistě CSS, zdvojený obsah, bez gradientů */
+  .marquee { @apply flex w-full overflow-hidden whitespace-nowrap; }
+  .marquee__track { @apply flex shrink-0 items-center animate-marquee will-change-transform; }
+  .marquee--reverse .marquee__track { @apply animate-marquee-reverse; }
+  .marquee-y { @apply flex flex-col overflow-hidden; }
+  .marquee-y__track { @apply flex flex-col shrink-0 animate-marquee-y will-change-transform; }
   @media (prefers-reduced-motion: reduce) {
     .marquee { overflow-x: auto; }
-    .marquee__track { animation: none; }
-    .marquee__track[aria-hidden="true"] { display: none; }
+    .marquee__track, .marquee-y__track { animation: none; }
+    .marquee__track[aria-hidden="true"], .marquee-y__track[aria-hidden="true"] { display: none; }
   }
 
-  /* Oddělovače sekcí */
-  .section {
-    @apply border-t-2 border-line py-20 md:py-32;
-  }
-  .section-tight {
-    @apply border-t-2 border-line py-12 md:py-20;
-  }
+  /* Sekce */
+  .section { @apply border-t-2 border-line py-20 md:py-32; }
+  .hairline-grid { @apply grid gap-px bg-line border-2 border-line; }
+  .hairline-grid > * { @apply bg-bg; }
 
-  /* Hairline grid: gap-px + barva pozadí kontejneru = tenké dělicí čáry */
-  .hairline-grid {
-    @apply grid gap-px bg-line border-2 border-line;
-  }
-  .hairline-grid > * {
-    @apply bg-bg;
-  }
+  .link { @apply underline decoration-2 underline-offset-8 decoration-line transition-colors duration-200 hover:decoration-accent hover:text-accent; }
+  .nav-link { @apply relative font-bold uppercase tracking-tight transition-colors duration-200 hover:text-accent; }
+  .nav-link[aria-current="page"] { @apply text-accent; }
 
-  /* Odkaz s podtržením v akcentu */
-  .link {
-    @apply underline decoration-2 underline-offset-8 decoration-line transition-colors duration-200 hover:decoration-accent hover:text-accent;
-  }
-  .nav-link {
-    @apply relative font-bold uppercase tracking-tight transition-colors duration-200 hover:text-accent;
-  }
-  .nav-link[aria-current="page"] {
-    @apply text-accent;
-  }
-
-  /* Šum – fixní vrstva přes celou obrazovku */
+  /* Šum přes celou obrazovku */
   .noise {
     @apply pointer-events-none fixed inset-0 z-50 opacity-[0.035] mix-blend-overlay;
     background-image: url("/assets/img/bg/noise.svg");
     background-size: 256px 256px;
   }
+  .bg-grid { background-image: url("/assets/img/bg/grid.svg"); background-size: 96px 96px; }
 
-  /* Mřížka na pozadí (plochá, tenké čáry) */
-  .bg-grid {
-    background-image: url("/assets/img/bg/grid.svg");
-    background-size: 96px 96px;
-  }
+  /* Reveal – bez JS je obsah vidět, JS nastaví výchozí stav a animuje */
+  .js [data-reveal] { opacity: 0; transform: translateY(1.5rem); }
+  .js [data-reveal="clip"] { transform: none; clip-path: inset(0 0 100% 0); }
+  .js.reduced-motion [data-reveal] { opacity: 1; transform: none; clip-path: none; }
 
-  /* Reveal – výchozí stav před animací (JS ho odstraní, bez JS je obsah vidět) */
-  .js [data-reveal] {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-  .js [data-reveal="clip"] {
-    transform: none;
-    clip-path: inset(0 0 100% 0);
-  }
-  .js.reduced-motion [data-reveal] {
-    opacity: 1;
-    transform: none;
-    clip-path: none;
-  }
+  /* Slovo po slově při scrollu */
+  .js [data-words] .word { opacity: 0.15; transition: opacity 0.2s linear; }
+  .js [data-words] .word.is-on { opacity: 1; }
+  .js.reduced-motion [data-words] .word { opacity: 1; }
 }
 
 /* --- Utility --------------------------------------------------------------- */
-@utility text-outline {
-  -webkit-text-stroke: 1px var(--color-line);
-  color: transparent;
-}
-@utility text-outline-accent {
-  -webkit-text-stroke: 2px var(--color-accent);
-  color: transparent;
-}
-@utility text-balance {
-  text-wrap: balance;
-}
+@utility text-outline { -webkit-text-stroke: 1px var(--color-line); color: transparent; }
+@utility text-outline-fg { -webkit-text-stroke: 2px var(--color-fg); color: transparent; }
+@utility text-outline-accent { -webkit-text-stroke: 2px var(--color-accent); color: transparent; }
+@utility text-balance { text-wrap: balance; }

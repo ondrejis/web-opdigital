@@ -4,39 +4,38 @@ permalink: /pripadove-studie/
 title: "Případové studie"
 description: "Konkrétní projekty, konkrétní čísla. Podívejte se, co jsme postavili a co to klientům přineslo."
 ---
-<section class="relative overflow-hidden border-b-2 border-line bg-grid">
-  <div class="wrap relative py-20 md:py-32">
-    <p class="eyebrow mb-8" data-reveal>Případové studie</p>
-    <h1 class="display text-balance mb-10" data-reveal="clip">Práce, která se dá změřit<span class="text-accent">.</span></h1>
-    <p class="lead max-w-2xl" data-reveal data-reveal-delay="0.1">Každý projekt je jiný. Někde stavíme vše od základů, jinde hledáme způsob, jak posunout fungující byznys ještě dál. Tady je pár nedávno dokončených projektů a toho, co přinesly.</p>
-  </div>
-</section>
+{% set heroEyebrow = "Projekty / Případové studie" %}
+{% set heroTitle = 'Práce, která se dá změřit<span class="text-accent">.</span>' %}
+{% set heroLead = "Každý projekt je jiný. Někde stavíme vše od základů, jinde hledáme způsob, jak posunout fungující byznys ještě dál. Tady je pár nedávno dokončených projektů a toho, co přinesly." %}
+{% set heroCta = true %}
+{% include "partials/page-hero.njk" %}
 
-<section class="py-20 md:py-32">
-  <div class="wrap">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" data-reveal-group>
-      {% for cs in caseStudies %}
-        {% set wide = loop.first %}
-        {% include "partials/case-card.njk" %}
-      {% endfor %}
-      <div class="card-flood flex flex-col justify-between min-h-[40vh] {% if caseStudies.length % 2 == 0 %}md:col-span-2{% endif %}" data-reveal-item>
-        <p class="eyebrow">Další projekt</p>
-        <div>
-          <p class="card-title title mb-6">Tady může být váš projekt<span class="text-accent">.</span></p>
-          <a href="/kontakt/" class="btn btn-primary">Pojďme to probrat <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </div>
+<div class="marquee bg-accent text-accent-fg py-4 md:py-6" style="--marquee-duration: 24s" aria-hidden="true">
+  {% for copy in [1, 2] %}
+    <ul class="marquee__track gap-12 md:gap-20 pr-12 md:pr-20">
+      {% for cs in caseStudies %}{% for st in cs.stats %}
+        <li class="flex items-baseline gap-4"><span class="text-4xl md:text-6xl font-bold tracking-tighter leading-none">{{ st.value }}{{ st.suffix }}</span><span class="text-sm md:text-lg font-bold uppercase tracking-widest">{{ st.label }} · {{ cs.client }}</span><span class="ml-8 text-2xl">✦</span></li>
+      {% endfor %}{% endfor %}
+    </ul>
+  {% endfor %}
+</div>
+
+<section class="border-b-2 border-line">
+  <div class="wrap py-8 md:py-12"><p class="eyebrow" data-reveal>{{ caseStudies.length }} projektů</p></div>
+  <div data-reveal-group>
+    {% for cs in caseStudies %}{% set idx = loop.index %}{% include "partials/case-row.njk" %}{% endfor %}
   </div>
 </section>
 
 <section class="section">
-  <div class="wrap mb-12">
+  <div class="wrap mb-10 md:mb-16">
     <p class="eyebrow mb-8" data-reveal>Reference</p>
-    <h2 class="headline text-balance" data-reveal="clip">Firmy, které nám důvěřují<span class="text-accent">.</span></h2>
+    <h2 class="headline text-balance" data-reveal="clip">Důvěřují nám<span class="text-accent">.</span></h2>
   </div>
-  {% set marqueeSpeed = 60 %}{% set marqueeInvert = false %}
-  {% include "partials/marquee-clients.njk" %}
+  <div class="border-y-2 border-line" data-reveal>
+    {% set marqueeSpeed = 70 %}{% set marqueeInvert = false %}{% set marqueeOutline = true %}
+    {% include "partials/marquee-clients.njk" %}
+  </div>
 </section>
 
 {% set ctaTitle = "Chcete podobný výsledek?" %}

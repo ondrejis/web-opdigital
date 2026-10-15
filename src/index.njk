@@ -4,31 +4,44 @@ permalink: /
 description: "Vyvíjíme software na míru, tvoříme webové stránky a spravujeme reklamy, které pomáhají firmám růst. OP Digital – Ondřej a Patrik."
 ---
 
-{# ===================== HERO ===================== #}
-<section class="relative overflow-hidden min-h-[calc(100svh-4rem)] md:min-h-[calc(100svh-7.5rem)] flex flex-col justify-center bg-grid" data-hero>
-  {# Pozadí: obří obrys loga + oranžový blok #}
-  <img src="/assets/img/bg/mark-outline.svg" alt="" aria-hidden="true" class="pointer-events-none absolute -right-[18vw] -top-[6vw] w-[70vw] max-w-none opacity-80 hidden md:block" data-drift="right">
-  <div class="pointer-events-none absolute left-0 bottom-0 h-2 w-[40vw] bg-accent" aria-hidden="true"></div>
+{# ============ 00 HERO ============ #}
+<section class="relative overflow-hidden min-h-[calc(100svh-4rem)] md:min-h-[calc(100svh-5rem)] flex flex-col" data-hero>
+  {# Vertikální marquee klientů na pravém okraji #}
+  <div class="pointer-events-none absolute right-0 top-0 bottom-0 hidden lg:flex items-stretch border-l-2 border-line w-16 xl:w-20" aria-hidden="true">
+    <div class="marquee-y h-full w-full" style="--marquee-duration: 70s">
+      {% for copy in [1, 2] %}
+        <ul class="marquee-y__track items-center gap-10 pb-10" {% if copy == 2 %}aria-hidden="true"{% endif %}>
+          {% for c in clients %}
+            <li class="py-6 text-sm font-bold uppercase tracking-widest text-muted-fg [writing-mode:vertical-rl] rotate-180 whitespace-nowrap">{{ c.name }}</li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </div>
+  </div>
 
-  <div class="wrap relative py-16 md:py-24">
-    <p class="eyebrow mb-8 md:mb-12" data-reveal>Digitální agentura · Ondřej &amp; Patrik</p>
+  <div class="wrap lg:pr-28 flex flex-col flex-1">
+    {# Horní meta řádek #}
+    <div class="flex items-center justify-between gap-4 py-5 text-xs md:text-sm font-bold uppercase tracking-widest text-muted-fg border-b-2 border-line" data-reveal>
+      <span>Digitální agentura</span>
+      <span class="hidden md:inline">Systémy · Weby · Kampaně</span>
+      <span>Ondřej &amp; Patrik</span>
+    </div>
 
-    <div data-hero-scale class="origin-top-left">
-      <h1
-        class="text-[clamp(2.5rem,8.2vw,9.75rem)] font-bold uppercase tracking-[-0.05em] leading-[0.85] text-balance"
-        x-data="rotator(['systémy', 'webové stránky', 'poptávkové kampaně'])"
-      >
-        <span class="block" data-reveal="clip">Stavíme</span>
-        <span class="block text-accent min-h-[1.7em] md:min-h-[0.85em]" data-reveal="clip" data-reveal-delay="0.1">
-          <span x-text="text">systémy</span><span class="inline-block w-[0.06em] h-[0.78em] align-baseline bg-accent ml-[0.04em] animate-blink motion-reduce:hidden" aria-hidden="true"></span>
+    {# Titulek přes celou šířku #}
+    <div class="flex-1 flex items-center py-8 md:py-10" data-hero-scale>
+      <h1 class="w-full font-bold uppercase leading-[0.82] tracking-[-0.05em]" x-data="rotator(['systémy', 'webové stránky', 'poptávkové kampaně'])">
+        <span class="block text-[clamp(3rem,12vw,13rem)]" data-reveal="clip">Stavíme</span>
+        <span class="block text-accent text-[clamp(1.9rem,7.4vw,8.25rem)] my-[0.12em] min-h-[0.85em] leading-[0.85]" data-reveal="clip" data-reveal-delay="0.1">
+          <span x-text="text">systémy</span><span class="inline-block w-[0.06em] h-[0.8em] align-baseline bg-accent ml-[0.05em] animate-blink motion-reduce:hidden" aria-hidden="true"></span>
         </span>
-        <span class="block" data-reveal="clip" data-reveal-delay="0.2">na míru<span class="text-accent">.</span></span>
+        <span class="block text-[clamp(3rem,12vw,13rem)]" data-reveal="clip" data-reveal-delay="0.2">na míru<span class="text-accent">.</span></span>
       </h1>
     </div>
 
-    <div class="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-      <p class="lead lg:col-span-7 max-w-2xl" data-reveal data-reveal-delay="0.3">{{ site.description }}</p>
-      <div class="lg:col-span-5 flex flex-col sm:flex-row gap-4 lg:justify-end" data-reveal data-reveal-delay="0.4">
+    {# Spodní řádek: text + CTA #}
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end border-t-2 border-line py-8 md:py-10">
+      <p class="lead md:col-span-6 max-w-xl" data-reveal data-reveal-delay="0.3">{{ site.description }}</p>
+      <div class="md:col-span-6 flex flex-col sm:flex-row gap-4 md:justify-end" data-reveal data-reveal-delay="0.4">
         <a href="/kontakt/" class="btn btn-primary btn-lg">Pojďme to probrat <span aria-hidden="true">→</span></a>
         <a href="#projekty" class="btn btn-outline btn-lg">Naše práce <span aria-hidden="true">↓</span></a>
       </div>
@@ -36,154 +49,149 @@ description: "Vyvíjíme software na míru, tvoříme webové stránky a spravuj
   </div>
 </section>
 
-{# ===================== RYCHLÝ MARQUEE (oranžový pás) ===================== #}
-<div class="marquee bg-accent text-accent-fg py-3 md:py-4 border-y-2 border-accent" style="--marquee-duration: 22s" aria-hidden="true">
+{# ============ STATS MARQUEE (rychlý, oranžový) ============ #}
+<div class="marquee bg-accent text-accent-fg py-4 md:py-6 border-y-2 border-accent" style="--marquee-duration: 24s" aria-hidden="true">
   {% for copy in [1, 2] %}
-    <ul class="marquee__track gap-8 pr-8 text-xl md:text-3xl font-bold uppercase tracking-tighter">
-      {% for w in ["Systémy na míru", "Webové stránky", "Meta Ads kampaně", "Automatizace", "Klientské portály", "Landing pages", "Poptávky, ne lajky"] %}
-        <li class="flex items-center gap-8"><span>{{ w }}</span><span class="text-base md:text-xl">✦</span></li>
+    <ul class="marquee__track gap-12 md:gap-20 pr-12 md:pr-20">
+      {% for s in [["27+", "webů za rok"], ["70 %", "domů prodáno za 5 měsíců"], ["247", "degustací pro RumMe"], ["2×", "víc poptávek pro kliniku"], ["16+", "firem, které nám důvěřují"], ["2", "lidi, žádná omáčka"]] %}
+        <li class="flex items-baseline gap-4">
+          <span class="text-4xl md:text-6xl font-bold tracking-tighter leading-none">{{ s[0] }}</span>
+          <span class="text-sm md:text-lg font-bold uppercase tracking-widest">{{ s[1] }}</span>
+          <span class="ml-8 text-2xl">✦</span>
+        </li>
       {% endfor %}
     </ul>
   {% endfor %}
 </div>
 
-{# ===================== SLUŽBY ===================== #}
-<section id="sluzby" class="section relative overflow-hidden">
+{# ============ 01 MANIFEST (slovo po slově) ============ #}
+<section class="py-24 md:py-40">
   <div class="wrap">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-20">
-      <h2 class="headline text-balance max-w-4xl" data-reveal="clip">Co pro vás můžeme postavit<span class="text-accent">?</span></h2>
-      <p class="lead max-w-md" data-reveal data-reveal-delay="0.1">Tři věci, které umíme opravdu dobře. Každá sama o sobě funguje, dohromady dávají firmě tah na branku.</p>
-    </div>
+    <p class="eyebrow mb-10 md:mb-16" data-reveal>01 / Co děláme</p>
+    <p class="headline max-w-[18ch] text-balance" data-words>
+      {% set manifest = ["Vyvíjíme", "software", "na", "míru,", "tvoříme", "webové", "stránky", "a", "spravujeme", "reklamy,", "které", "pomáhají", "firmám", "růst."] %}
+      {% for w in manifest %}<span class="word {% if w in ['software', 'webové', 'stránky', 'reklamy,'] %}text-accent{% endif %}">{{ w }}</span>{% if not loop.last %} {% endif %}{% endfor %}
+    </p>
+  </div>
+</section>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-      {% for s in services %}
-        <a
-          href="/{{ s.slug }}/"
-          class="card-flood group flex flex-col {% if s.featured %}md:col-span-2 lg:grid lg:grid-cols-12 lg:gap-12 lg:items-end min-h-[60vh]{% else %}min-h-[50vh]{% endif %}"
-          data-reveal
-          {% if not loop.first %}data-reveal-delay="{{ (loop.index0 * 0.1) }}"{% endif %}
-        >
-          <span class="card-number giant-number absolute -top-6 -right-4 md:-right-8" aria-hidden="true">{{ s.number }}</span>
-
-          <div class="relative {% if s.featured %}lg:col-span-7{% endif %} flex flex-col h-full">
-            <p class="eyebrow mb-8">{{ s.number }} / {{ s.label }}</p>
-            <h3 class="card-title {% if s.featured %}text-[clamp(2.25rem,5.5vw,5.5rem)]{% else %}text-[clamp(2rem,4vw,3.75rem)]{% endif %} font-bold uppercase tracking-tighter leading-[0.9] mb-6 text-balance">{{ s.title }}</h3>
-            <p class="card-title text-xl md:text-2xl font-bold tracking-tight mb-4">{{ s.tagline }}</p>
-            <p class="card-text text-lg md:text-xl leading-tight max-w-2xl mb-8">{{ s.text }}</p>
-            <ul class="flex flex-wrap gap-2 mb-10">
-              {% for t in s.tags %}<li class="tag card-tag">{{ t }}</li>{% endfor %}
-            </ul>
-            <span class="card-title mt-auto inline-flex items-center gap-3 text-lg md:text-xl font-bold uppercase tracking-tighter">
-              {{ s.linkLabel }}
-              <span class="inline-block transition-transform duration-300 group-hover:translate-x-2" aria-hidden="true">→</span>
-            </span>
-          </div>
-
-          {% if s.featured %}
-            {# Místo pro ukázku skutečného systému (screenshot) #}
-            <div class="relative lg:col-span-5 mt-10 lg:mt-0 border-2 border-line group-hover:border-accent-fg/30 aspect-[4/3] flex items-end p-6 bg-muted-deep group-hover:bg-accent-fg/10 transition-colors duration-300 bg-grid" aria-hidden="true">
-              <div class="absolute inset-x-6 top-6 h-2 w-16 bg-accent group-hover:bg-accent-fg"></div>
-              <div class="absolute inset-x-6 top-12 space-y-2">
-                {% for w in [80, 55, 65, 40] %}<div class="h-2 bg-line/60 group-hover:bg-accent-fg/20" style="width: {{ w }}%"></div>{% endfor %}
-              </div>
-              <p class="card-text text-xs uppercase tracking-widest">Ukázka systému</p>
+{# ============ 02 SLUŽBY – typografický seznam ============ #}
+<section id="sluzby" class="border-b-2 border-line">
+  <div class="wrap pb-8 md:pb-12">
+    <p class="eyebrow" data-reveal>02 / Co pro vás můžeme postavit</p>
+  </div>
+  <div data-reveal-group>
+    {% for s in services %}
+      <a href="/{{ s.slug }}/" class="row-flood group block" data-reveal-item>
+        <div class="wrap grid grid-cols-12 gap-x-4 md:gap-x-8 py-10 md:py-16 items-start">
+          <span class="col-span-12 md:col-span-2 flood-muted text-xl md:text-3xl font-bold tracking-tighter text-muted-fg leading-none mb-4 md:mb-0 md:pt-3" aria-hidden="true">{{ s.number }}</span>
+          <div class="col-span-12 md:col-span-9">
+            <h2 class="flood-fg flood-shift headline text-balance">{{ s.shortTitle }}<span class="text-accent group-hover:text-accent-fg">.</span></h2>
+            <p class="flood-fg text-xl md:text-3xl font-bold tracking-tight mt-5 md:mt-6">{{ s.tagline }}</p>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-12 gap-6">
+              <p class="flood-muted md:col-span-7 text-lg md:text-xl leading-tight text-muted-fg max-w-2xl">{{ s.text }}</p>
+              <ul class="md:col-span-5 flex flex-wrap gap-2 content-start">
+                {% for t in s.tags %}<li class="tag flood-fg border-current">{{ t }}</li>{% endfor %}
+              </ul>
             </div>
-          {% endif %}
+          </div>
+          <span class="col-span-12 md:col-span-1 flood-fg justify-self-end text-4xl md:text-6xl font-bold leading-none transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2 mt-6 md:mt-0" aria-hidden="true">↗</span>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+{# ============ 03 PROJEKTY – sticky panely ============ #}
+<section id="projekty">
+  <div class="wrap py-20 md:py-32">
+    <p class="eyebrow mb-8" data-reveal>03 / Nedávno dokončené projekty</p>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+      <h2 class="headline lg:col-span-8 text-balance" data-reveal="clip">Každý projekt je jiný<span class="text-accent">.</span></h2>
+      <p class="lead lg:col-span-4" data-reveal data-reveal-delay="0.1">Někde stavíme vše od základů, jinde hledáme způsob, jak posunout fungující byznys ještě dál.</p>
+    </div>
+  </div>
+
+  <div>
+    {% for cs in caseStudies %}
+      {% if loop.index <= 3 %}
+        {% set invert = (loop.index == 2) %}
+        <a href="/pripadove-studie/{{ cs.slug }}/" class="group block lg:sticky lg:top-20 border-t-2 {% if invert %}bg-accent text-accent-fg border-accent{% else %}bg-bg text-fg border-line{% endif %} overflow-hidden">
+          <div class="wrap lg:min-h-[80vh] grid grid-cols-1 lg:grid-cols-12 gap-8 py-12 md:py-20 relative">
+            {# Obrovské jméno klienta jako grafika #}
+            <span class="pointer-events-none select-none absolute -bottom-4 right-0 text-[clamp(4rem,14vw,16rem)] font-bold uppercase tracking-tighter leading-none whitespace-nowrap {% if invert %}text-accent-fg/10{% else %}text-muted-deep{% endif %}" aria-hidden="true" data-drift="left">{{ cs.client }}</span>
+
+            <div class="lg:col-span-7 flex flex-col justify-between relative">
+              <p class="eyebrow {% if invert %}text-accent-fg/70 [&::before]:bg-accent-fg{% endif %}">{{ loop.index | pad }} / {{ cs.category }} · {{ cs.client }}</p>
+              <div class="mt-12 lg:mt-16">
+                <h3 class="headline text-balance mb-6 transition-transform duration-300 group-hover:translate-x-4">{{ cs.title }}</h3>
+                <p class="text-lg md:text-2xl leading-tight max-w-xl {% if invert %}text-accent-fg/80{% else %}text-muted-fg{% endif %}">{{ cs.summary }}</p>
+                <span class="inline-flex items-center gap-3 mt-8 text-lg md:text-xl font-bold uppercase tracking-tighter">Detail projektu <span class="transition-transform duration-300 group-hover:translate-x-2" aria-hidden="true">→</span></span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5 flex lg:flex-col lg:items-end lg:justify-end gap-10 relative">
+              {% for st in cs.stats %}
+                <div class="lg:text-right">
+                  <span class="block text-[clamp(4rem,11vw,12rem)] font-bold tracking-tighter leading-none">{{ st.value }}{{ st.suffix }}</span>
+                  <span class="block text-xs md:text-base font-bold uppercase tracking-widest mt-2 {% if invert %}text-accent-fg/70{% else %}text-muted-fg{% endif %}">{{ st.label }}</span>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
         </a>
-      {% endfor %}
+      {% endif %}
+    {% endfor %}
+    <div class="relative bg-bg border-t-2 border-line">
+      <div class="wrap py-10 md:py-14 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <p class="title">Chcete vidět víc<span class="text-accent">?</span></p>
+        <a href="/pripadove-studie/" class="btn btn-outline btn-lg">Všechny projekty <span aria-hidden="true">→</span></a>
+      </div>
     </div>
   </div>
 </section>
 
-{# ===================== PROJEKTY ===================== #}
-<section id="projekty" class="section relative overflow-hidden">
-  <span class="giant-number absolute -top-8 -left-4 hidden lg:block" aria-hidden="true" data-drift="right">04</span>
-  <div class="wrap relative">
-    <p class="eyebrow mb-8" data-reveal>04 / Projekty</p>
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-20">
-      <h2 class="headline text-balance" data-reveal="clip">Nedávno dokončené projekty<span class="text-accent">.</span></h2>
-      <p class="lead max-w-md" data-reveal data-reveal-delay="0.1">Každý projekt je jiný. Někde stavíme vše od základů, jinde hledáme způsob, jak posunout fungující byznys ještě dál. Tady je pár nedávno dokončených projektů.</p>
+{# ============ 04 POSTUP ============ #}
+<section id="spoluprace" class="section">
+  <div class="wrap">
+    <p class="eyebrow mb-8" data-reveal>04 / Spolupráce</p>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12 md:mb-20">
+      <h2 class="headline lg:col-span-8 text-balance" data-reveal="clip">Od nápadu k hotové věci<span class="text-accent">.</span></h2>
+      <p class="lead lg:col-span-4" data-reveal data-reveal-delay="0.1">Nemusíte mít všechno promyšlené do posledního detailu. Stačí nám říct, co řešíte. Společně najdeme cestu, jak to dostat do praxe.</p>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" data-reveal-group>
-      {% for cs in caseStudies %}
-        {% if loop.index <= 3 %}
-          {% set wide = cs.featured %}
-          {% include "partials/case-card.njk" %}
-        {% endif %}
-      {% endfor %}
-    </div>
-
-    <div class="mt-12 flex justify-center">
-      <a href="/pripadove-studie/" class="btn btn-outline btn-lg">Všechny případové studie <span aria-hidden="true">→</span></a>
-    </div>
-  </div>
-</section>
-
-{# ===================== REFERENCE ===================== #}
-<section id="reference" class="section relative overflow-hidden">
-  <div class="wrap mb-12 md:mb-16">
-    <p class="eyebrow mb-8" data-reveal>05 / Reference</p>
-    <h2 class="headline text-balance" data-reveal="clip">Firmy, které nám důvěřují<span class="text-accent">.</span></h2>
-  </div>
-
-  {# Dva protiběžné pásy #}
-  <div class="space-y-0" data-reveal>
-    {% set marqueeSpeed = 60 %}{% set marqueeInvert = false %}
-    {% include "partials/marquee-clients.njk" %}
-  </div>
-
-  <div class="wrap mt-12 md:mt-16">
-    <ul class="hairline-grid grid-cols-2 md:grid-cols-4" data-reveal-group>
-      {% for c in clients %}
-        <li class="flex items-center justify-center min-h-28 md:min-h-36 p-6 text-center hover:bg-accent hover:text-accent-fg transition-colors duration-300" data-reveal-item>
-          {% if c.logo %}
-            <img src="{{ c.logo }}" alt="{{ c.name }}" class="max-h-12 w-auto" loading="lazy">
-          {% else %}
-            <span class="text-base md:text-xl font-bold uppercase tracking-tight">{{ c.name }}</span>
-          {% endif %}
+    <ol class="hairline-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" data-reveal-group>
+      {% for step in process %}
+        <li class="group p-6 md:p-8 flex flex-col justify-between min-h-[60vh] lg:min-h-[70vh] hover:bg-accent hover:text-accent-fg transition-colors duration-300" data-reveal-item>
+          <span class="text-[clamp(6rem,14vw,12rem)] font-bold tracking-tighter leading-[0.8] text-outline group-hover:text-accent-fg group-hover:[-webkit-text-stroke:0] transition-colors duration-300" aria-hidden="true">{{ loop.index | pad }}</span>
+          <div>
+            <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tighter leading-none mb-4 text-balance">{{ step.title }}</h3>
+            <p class="text-base md:text-lg leading-tight text-muted-fg group-hover:text-accent-fg/80 transition-colors duration-300">{{ step.text }}</p>
+          </div>
         </li>
       {% endfor %}
-    </ul>
+    </ol>
   </div>
 </section>
 
-{# ===================== SPOLUPRÁCE – sticky karty ===================== #}
-<section id="spoluprace" class="section relative">
-  <div class="wrap">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-      {# Levý sloupec: zůstává přilepený, zatímco karty rolují #}
-      <div class="lg:col-span-5">
-        <div class="lg:sticky lg:top-40">
-          <p class="eyebrow mb-8" data-reveal>06 / Spolupráce</p>
-          <h2 class="headline text-balance mb-8" data-reveal="clip">Od nápadu k hotové věci<span class="text-accent">.</span></h2>
-          <p class="lead max-w-md" data-reveal data-reveal-delay="0.1">Nemusíte mít všechno promyšlené do posledního detailu. Stačí nám říct, co řešíte. Společně najdeme cestu, jak to dostat do praxe.</p>
-          <a href="/kontakt/" class="btn btn-primary mt-10 hidden lg:inline-flex" data-reveal data-reveal-delay="0.2">Začít prvním krokem <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-
-      {# Pravý sloupec: karty se na sebe vrství #}
-      <ol class="lg:col-span-7 space-y-6 lg:space-y-8">
-        {% for step in process %}
-          <li class="lg:sticky border-2 border-line bg-bg p-8 md:p-12 min-h-[40vh] flex flex-col justify-between overflow-hidden group hover:border-accent transition-colors duration-300" style="top: calc(7rem + {{ loop.index0 }} * 1.5rem)">
-            <span class="giant-number absolute -top-8 -right-4 group-hover:text-accent/15 transition-colors duration-300" aria-hidden="true">{{ loop.index | pad }}</span>
-            <p class="relative eyebrow">Krok {{ loop.index | pad }} / {{ process.length | pad }}</p>
-            <div class="relative mt-16">
-              <h3 class="title mb-4 text-balance">{{ step.title }}</h3>
-              <p class="text-lg md:text-xl lg:text-2xl leading-tight text-muted-fg max-w-xl">{{ step.text }}</p>
-            </div>
-          </li>
-        {% endfor %}
-      </ol>
+{# ============ 05 REFERENCE – jen typografie v pohybu ============ #}
+<section id="reference" class="section overflow-hidden">
+  <div class="wrap mb-10 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <div>
+      <p class="eyebrow mb-8" data-reveal>05 / Reference</p>
+      <h2 class="headline" data-reveal="clip">Důvěřují nám<span class="text-accent">.</span></h2>
     </div>
+    <a href="/reference/" class="btn btn-ghost px-0 text-xl" data-reveal>Všechny reference <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="space-y-px bg-line border-y-2 border-line" data-reveal>
+    {% set marqueeSpeed = 70 %}{% set marqueeInvert = false %}{% set marqueeOutline = true %}
+    {% include "partials/marquee-clients.njk" %}
+    {% set marqueeSpeed = 55 %}{% set marqueeInvert = false %}{% set marqueeOutline = false %}{% set marqueeReverse = true %}
+    {% include "partials/marquee-clients.njk" %}
   </div>
 </section>
 
-{# ===================== TÝM ===================== #}
+{# ============ 06 TÝM ============ #}
 {% include "partials/team.njk" %}
 
-{# ===================== LOGA (pomalu) + KONTAKT ===================== #}
-{% set marqueeSpeed = 90 %}{% set marqueeInvert = true %}
-{% include "partials/marquee-clients.njk" %}
-
+{# ============ 07 KONTAKT ============ #}
 {% include "partials/contact.njk" %}
