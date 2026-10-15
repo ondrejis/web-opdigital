@@ -1,0 +1,10 @@
+{# Oranžový pás s výzvou k akci – používá se na podstránkách před patičkou #}
+<section class="bg-accent text-accent-fg border-t-2 border-accent">
+  <div class="wrap py-20 md:py-32 flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+    <div>
+      <p class="text-xs md:text-sm font-bold uppercase tracking-widest mb-6 opacity-70">Pojďme se potkat</p>
+      <h2 class="display text-balance" data-reveal="clip">{{ ctaTitle or "Máte představu? Sem s ní." }}</h2>
+    </div>
+    <a href="/kontakt/" class="btn btn-lg bg-accent-fg text-fg hover:scale-105 active:scale-95 shrink-0">Pojďme to probrat <span aria-hidden="true">→</span></a>
+  </div>
+</section>

@@ -1,0 +1,110 @@
+[
+  {
+    "slug": "systemy",
+    "number": "01",
+    "label": "Vývoj softwaru",
+    "navLabel": "Systémy",
+    "shortTitle": "Systémy na míru",
+    "title": "Systém na míru, který se přizpůsobí vaší firmě.",
+    "tagline": "Software se má přizpůsobit vám. Ne naopak.",
+    "text": "Stavíme systémy a aplikace přesně podle toho, jak vaše firma funguje. Zjednodušíme procesy, propojíme nástroje a zbavíme vás zbytečné ruční práce.",
+    "tags": ["Interní systémy", "Klientské portály", "Aplikace", "Automatizace"],
+    "linkLabel": "Více o systémech",
+    "featured": true,
+    "seo": {
+      "title": "Systémy a software na míru",
+      "description": "Vyvíjíme interní systémy, klientské portály, aplikace a automatizace přesně podle toho, jak vaše firma funguje."
+    },
+    "intro": "Tabulky v Excelu, pět nástrojů, které spolu nemluví, a kolega, který ručně přepisuje data. Známe to. Postavíme vám jeden systém, který to všechno spojí a bude fungovat tak, jak pracujete vy.",
+    "benefits": [
+      { "title": "Méně ruční práce", "text": "Co se dá zautomatizovat, zautomatizujeme. Lidé se pak věnují tomu, co má hodnotu." },
+      { "title": "Jedna pravda o datech", "text": "Objednávky, zákazníci, kapacity, faktury. Všechno na jednom místě a vždy aktuální." },
+      { "title": "Roste s vámi", "text": "Začneme tím nejdůležitějším a systém rozšiřujeme podle toho, jak se vyvíjí vaše firma." },
+      { "title": "Je váš", "text": "Žádné licence za uživatele, žádný dodavatel, který vás drží v šachu. Zdrojový kód patří vám." }
+    ],
+    "offer": [
+      { "title": "Interní systémy", "text": "Evidence zakázek, plánování, sklad, CRM nebo cokoliv, co dnes řešíte v tabulkách a e-mailech." },
+      { "title": "Klientské portály", "text": "Zákazníci si sami zjistí stav objednávky, stáhnou dokumenty nebo zadají požadavek. Vy máte klid." },
+      { "title": "Aplikace", "text": "Webové i mobilní aplikace pro vaše lidi v terénu, na dílně nebo u zákazníka." },
+      { "title": "Automatizace a integrace", "text": "Propojíme účetnictví, e-shop, CRM, Google Workspace a další nástroje, aby data tekla sama." }
+    ],
+    "faq": [
+      { "q": "Kolik stojí systém na míru?", "a": "Záleží na rozsahu. Většinou začínáme minimální verzí, která vyřeší to nejpalčivější, a dál rozvíjíme po etapách. Cenu a rozsah první etapy znáte předem." },
+      { "q": "Jak dlouho to trvá?", "a": "První funkční verzi obvykle nasazujeme v řádu týdnů, ne měsíců. Pracujeme po menších krocích, takže výsledky vidíte průběžně." },
+      { "q": "Co když už nějaký systém máme?", "a": "Skvělé. Buď ho napojíme, nebo ho postupně nahradíme. Nikdy nezačínáme bouráním toho, co funguje." },
+      { "q": "Kdo se o systém stará po spuštění?", "a": "My. Hostujeme, aktualizujeme, hlídáme a rozvíjíme. Nebo vám ho předáme a zaškolíme vaše lidi. Jak chcete." }
+    ]
+  },
+  {
+    "slug": "weby",
+    "number": "02",
+    "label": "Webové stránky",
+    "navLabel": "Weby",
+    "shortTitle": "Webové stránky",
+    "title": "Webové stránky.",
+    "tagline": "Hezký web je základ. My chceme víc.",
+    "text": "Tvoříme weby, které nejen dobře vypadají, ale také se snadno používají a pomáhají proměňovat návštěvníky v zákazníky.",
+    "tags": ["Firemní weby", "Landing pages", "Weby na míru"],
+    "linkLabel": "Více o webech",
+    "featured": false,
+    "seo": {
+      "title": "Webové stránky na míru",
+      "description": "Firemní weby, landing pages a weby na míru, které dobře vypadají, snadno se používají a přinášejí poptávky."
+    },
+    "intro": "Web není vizitka. Je to váš nejpracovitější obchodník, který funguje 24 hodin denně. Postavíme ho tak, aby návštěvník během pár vteřin pochopil, co děláte a proč má napsat právě vám.",
+    "benefits": [
+      { "title": "Postavený na poptávky", "text": "Každá stránka má jasný cíl a vede návštěvníka k akci. Bez omáčky a bez bludišť." },
+      { "title": "Rychlý a technicky čistý", "text": "Žádné těžké šablony. Lehký kód, rychlé načtení, dobré skóre ve vyhledávačích." },
+      { "title": "Snadno upravitelný", "text": "Texty, obrázky nebo nová stránka? Zvládnete to sami, nebo to uděláme za vás během dne." },
+      { "title": "Nadčasový design", "text": "Vycházíme z vaší značky, ne z módní šablony. Web vám bude dobře sloužit i za pár let." }
+    ],
+    "offer": [
+      { "title": "Firemní weby", "text": "Kompletní prezentace firmy od struktury a textů přes design až po spuštění." },
+      { "title": "Landing pages", "text": "Jedna stránka, jeden cíl. Ideální pro kampaně, nové produkty nebo nábor." },
+      { "title": "Weby na míru", "text": "Konfigurátory, katalogy, rezervace, napojení na systémy. Když šablona nestačí." },
+      { "title": "Redesign a péče", "text": "Oživíme stávající web, zrychlíme ho a postaráme se o něj dlouhodobě." }
+    ],
+    "faq": [
+      { "q": "Kolik stojí web?", "a": "Jednoduchá landing page začíná na desítkách tisíc, firemní web na míru je individuální. Po první schůzce dostanete konkrétní nabídku s pevnou cenou." },
+      { "q": "Za jak dlouho bude web hotový?", "a": "Landing page za 2 až 3 týdny, firemní web obvykle za 4 až 8 týdnů. Záleží hlavně na tom, jak rychle budeme mít podklady." },
+      { "q": "Připravíte i texty a fotky?", "a": "Ano. Texty píšeme tak, aby prodávaly, a s fotkami buď pomůžeme, nebo zajistíme fotografa." },
+      { "q": "Budu si moct web sám upravovat?", "a": "Ano. Předáme vám ho s jednoduchou správou obsahu a zaškolíme vás." }
+    ]
+  },
+  {
+    "slug": "kampane",
+    "number": "03",
+    "label": "Meta Ads",
+    "navLabel": "Kampaně",
+    "shortTitle": "Meta Ads kampaně",
+    "title": "Poptávkové kampaně.",
+    "tagline": "Lajky jsou fajn. Poptávky jsou lepší.",
+    "text": "Připravujeme a spravujeme reklamy na Facebooku a Instagramu, které oslovují správné lidi a pomáhají firmám získávat nové zákazníky.",
+    "tags": ["Strategie", "Kreativa", "Správa kampaní", "Optimalizace"],
+    "linkLabel": "Více o kampaních",
+    "featured": false,
+    "seo": {
+      "title": "Poptávkové kampaně na Facebooku a Instagramu",
+      "description": "Připravujeme a spravujeme Meta Ads kampaně, které oslovují správné lidi a přinášejí firmám nové zákazníky."
+    },
+    "intro": "Nezajímá nás dosah ani lajky. Zajímá nás, kolik poptávek přišlo a kolik vás každá stála. Kampaně stavíme tak, aby se daly měřit, vyhodnocovat a každý měsíc zlepšovat.",
+    "benefits": [
+      { "title": "Měříme poptávky, ne dojmy", "text": "Víte přesně, kolik poptávek kampaň přinesla a za kolik. Žádné reporty plné dosahů." },
+      { "title": "Kreativa, co zastaví palec", "text": "Vizuály a texty připravujeme my. Testujeme varianty a necháváme vyhrát ty, které fungují." },
+      { "title": "Správné publikum", "text": "Cílíme na lidi, kteří mají problém, který řešíte. Ne na všechny v okruhu 50 km." },
+      { "title": "Průběžná optimalizace", "text": "Kampaně hlídáme každý týden a rozpočet přesouváme tam, kde vydělává nejvíc." }
+    ],
+    "offer": [
+      { "title": "Strategie", "text": "Komu, co a proč. Nastavíme cíle, rozpočet a cestu zákazníka od reklamy k poptávce." },
+      { "title": "Kreativa", "text": "Statické vizuály, videa i texty. Vše v souladu s vaší značkou a připravené k testování." },
+      { "title": "Správa kampaní", "text": "Nastavení, spuštění, denní dohled a pravidelný report, kterému rozumíte." },
+      { "title": "Landing page ke kampani", "text": "Reklama je jen půlka cesty. Připravíme stránku, která poptávku dotáhne." }
+    ],
+    "faq": [
+      { "q": "Jaký rozpočet potřebuji?", "a": "Doporučujeme začít od 15 000 Kč měsíčně na samotnou reklamu. Menší rozpočet nedá dost dat na to, aby se kampaň dala smysluplně optimalizovat." },
+      { "q": "Kdy uvidím první výsledky?", "a": "První poptávky obvykle přicházejí během prvních dvou týdnů. Stabilní výsledky a jasnou cenu za poptávku máme po prvním až druhém měsíci." },
+      { "q": "Vážete nás dlouhodobou smlouvou?", "a": "Ne. Spolupracujeme měsíc po měsíci. Když nebudou výsledky, nemá smysl pokračovat, a to platí pro obě strany." },
+      { "q": "Děláte i Google Ads?", "a": "Soustředíme se na Meta (Facebook a Instagram), kde máme nejlepší výsledky. Pokud dává smysl i Google, řekneme vám to na rovinu." }
+    ]
+  }
+]

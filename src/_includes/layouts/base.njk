@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="{{ site.lang }}" class="bg-bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.name }} – Systémy, weby a kampaně na míru{% endif %}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta name="theme-color" content="#09090b">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:locale" content="{{ site.locale }}">
+  <meta property="og:title" content="{% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.name }} – Systémy, weby a kampaně na míru{% endif %}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/space-grotesk-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script defer src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "{{ site.name }}",
+    "url": "{{ site.url }}",
+    "email": "{{ site.email }}",
+    "telephone": "{{ site.phone }}",
+    "description": "{{ site.description }}",
+    "areaServed": "CZ",
+    "sameAs": ["{{ site.social.instagram }}", "{{ site.social.facebook }}", "{{ site.social.linkedin }}"]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden" x-data>
+  <a href="#obsah" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] btn btn-primary">Přeskočit na obsah</a>
+  <div class="noise" aria-hidden="true"></div>
+
+  {% include "partials/header.njk" %}
+
+  <main id="obsah" class="flex-1">
+    {{ content | safe }}
+  </main>
+
+  {% include "partials/footer.njk" %}
+  {% include "partials/cookies.njk" %}
+</body>
+</html>

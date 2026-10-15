@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+permalink: /pripadove-studie/
+title: "Případové studie"
+description: "Konkrétní projekty, konkrétní čísla. Podívejte se, co jsme postavili a co to klientům přineslo."
+---
+<section class="relative overflow-hidden border-b-2 border-line bg-grid">
+  <div class="wrap relative py-20 md:py-32">
+    <p class="eyebrow mb-8" data-reveal>Případové studie</p>
+    <h1 class="display text-balance mb-10" data-reveal="clip">Práce, která se dá změřit<span class="text-accent">.</span></h1>
+    <p class="lead max-w-2xl" data-reveal data-reveal-delay="0.1">Každý projekt je jiný. Někde stavíme vše od základů, jinde hledáme způsob, jak posunout fungující byznys ještě dál. Tady je pár nedávno dokončených projektů a toho, co přinesly.</p>
+  </div>
+</section>
+
+<section class="py-20 md:py-32">
+  <div class="wrap">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" data-reveal-group>
+      {% for cs in caseStudies %}
+        {% set wide = loop.first %}
+        {% include "partials/case-card.njk" %}
+      {% endfor %}
+      <div class="card-flood flex flex-col justify-between min-h-[40vh] {% if caseStudies.length % 2 == 0 %}md:col-span-2{% endif %}" data-reveal-item>
+        <p class="eyebrow">Další projekt</p>
+        <div>
+          <p class="card-title title mb-6">Tady může být váš projekt<span class="text-accent">.</span></p>
+          <a href="/kontakt/" class="btn btn-primary">Pojďme to probrat <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap mb-12">
+    <p class="eyebrow mb-8" data-reveal>Reference</p>
+    <h2 class="headline text-balance" data-reveal="clip">Firmy, které nám důvěřují<span class="text-accent">.</span></h2>
+  </div>
+  {% set marqueeSpeed = 60 %}{% set marqueeInvert = false %}
+  {% include "partials/marquee-clients.njk" %}
+</section>
+
+{% set ctaTitle = "Chcete podobný výsledek?" %}
+{% include "partials/cta-band.njk" %}

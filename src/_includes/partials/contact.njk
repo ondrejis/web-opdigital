@@ -1,0 +1,65 @@
+{# Kontaktní sekce: text + formulář. Používá se na homepage i na stránce Kontakt. #}
+<section id="kontakt" class="section relative overflow-hidden">
+  <span class="giant-number absolute -top-10 -right-6 md:-right-10 hidden md:block" aria-hidden="true" data-drift="left">07</span>
+  <div class="wrap relative">
+    <p class="eyebrow mb-8" data-reveal>07 / Kontakt</p>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+      <div class="lg:col-span-6">
+        <h2 class="headline mb-8 text-balance" data-reveal="clip">Máte představu? <span class="text-accent">Sem s ní.</span></h2>
+        <p class="lead max-w-2xl mb-12" data-reveal data-reveal-delay="0.1">Máte představu, zadání, nebo zatím jen nápad? Napište nám, co řešíte. Rádi si vás poslechneme a společně zjistíme, jak se do toho pustit.</p>
+
+        <div class="space-y-8" data-reveal-group>
+          <div data-reveal-item>
+            <p class="eyebrow flex mb-3">Raději napíšete přímo?</p>
+            <a href="mailto:{{ site.email }}" class="text-2xl md:text-4xl font-bold uppercase tracking-tighter link break-all">{{ site.email }}</a>
+          </div>
+          <div data-reveal-item>
+            <p class="eyebrow flex mb-3">Nebo zavolejte</p>
+            <a href="tel:{{ site.phoneHref }}" class="text-2xl md:text-4xl font-bold uppercase tracking-tighter link">{{ site.phone }}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6">
+        <form
+          x-data="contactForm('{{ site.formEndpoint }}', '{{ site.email }}')"
+          @submit.prevent="submit"
+          class="border-2 border-line p-6 md:p-12 bg-bg"
+          data-reveal
+          data-reveal-delay="0.15"
+        >
+          <p class="title mb-10">Povězte nám o svém projektu<span class="text-accent">.</span></p>
+
+          <div class="space-y-8" x-show="status !== 'sent'">
+            <label class="field">
+              <span class="field-label">Jak vám říkat?</span>
+              <input type="text" name="name" x-model="name" class="input-xl" placeholder="Vaše jméno" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span class="field-label">Kam se vám ozvat?</span>
+              <input type="email" name="email" x-model="email" class="input-xl" placeholder="vas@email.cz" autocomplete="email" required>
+            </label>
+            <label class="field">
+              <span class="field-label">Co máte v hlavě?</span>
+              <textarea name="message" x-model="message" class="input-xl" rows="3" placeholder="Pár slov o projektu…" required></textarea>
+            </label>
+            {# Honeypot proti spamu #}
+            <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+
+            <button type="submit" class="btn btn-primary btn-lg w-full" :disabled="status === 'sending'">
+              <span x-text="status === 'sending' ? 'Odesílám…' : 'Odeslat'"></span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <p class="text-sm text-muted-fg" x-show="status === 'error'" x-cloak>Něco se pokazilo. Napište nám prosím přímo na <a href="mailto:{{ site.email }}" class="link">{{ site.email }}</a>.</p>
+            <p class="text-xs text-muted-fg">Odesláním souhlasíte se <a href="/ochrana-osobnich-udaju/" class="link">zpracováním osobních údajů</a>.</p>
+          </div>
+
+          <div x-show="status === 'sent'" x-cloak class="py-8">
+            <p class="headline text-accent mb-4">Díky<span class="text-fg">.</span></p>
+            <p class="lead">Máme to. Ozveme se vám nejpozději do druhého pracovního dne.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

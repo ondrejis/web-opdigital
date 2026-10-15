@@ -1,0 +1,52 @@
+<footer class="border-t-2 border-line bg-bg overflow-hidden">
+  <div class="wrap py-16 md:py-24">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 text-lg">
+      <div>
+        <h2 class="eyebrow mb-6">Co děláme</h2>
+        <ul class="space-y-3 font-medium">
+          {% for s in services %}
+            <li><a href="/{{ s.slug }}/" class="hover:text-accent transition-colors">{{ s.shortTitle }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h2 class="eyebrow mb-6">OP Digital</h2>
+        <ul class="space-y-3 font-medium">
+          {% for item in site.navSecondary %}
+            <li><a href="{{ item.url }}" class="hover:text-accent transition-colors">{{ item.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h2 class="eyebrow mb-6">Sledujte nás</h2>
+        <ul class="space-y-3 font-medium">
+          <li><a href="{{ site.social.instagram }}" rel="noopener" target="_blank" class="hover:text-accent transition-colors">Instagram <span aria-hidden="true">↗</span></a></li>
+          <li><a href="{{ site.social.facebook }}" rel="noopener" target="_blank" class="hover:text-accent transition-colors">Facebook <span aria-hidden="true">↗</span></a></li>
+          <li><a href="{{ site.social.linkedin }}" rel="noopener" target="_blank" class="hover:text-accent transition-colors">LinkedIn <span aria-hidden="true">↗</span></a></li>
+        </ul>
+        <div class="mt-8 text-muted-fg">
+          <a href="mailto:{{ site.email }}" class="link">{{ site.email }}</a><br>
+          <a href="tel:{{ site.phoneHref }}" class="link">{{ site.phone }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Obří wordmark – text jako obraz #}
+  <div class="wrap">
+    <p class="text-[clamp(3.5rem,15.5vw,19rem)] font-bold uppercase tracking-tighter leading-[0.8] whitespace-nowrap text-fg select-none text-center" aria-hidden="true">
+      OP Digital<span class="text-accent">.</span>
+    </p>
+  </div>
+
+  <div class="border-t-2 border-line mt-12">
+    <div class="wrap flex flex-col md:flex-row items-start md:items-center justify-between gap-4 py-6 text-xs md:text-sm text-muted-fg uppercase tracking-widest">
+      <p>© {{ "" | year }} {{ site.name }}. Všechna práva vyhrazena.</p>
+      <div class="flex flex-wrap gap-x-8 gap-y-2">
+        <a href="/ochrana-osobnich-udaju/" class="hover:text-fg">Ochrana osobních údajů</a>
+        <button type="button" class="uppercase tracking-widest hover:text-fg" @click="window.dispatchEvent(new CustomEvent('op:cookies'))">Nastavení cookies</button>
+        <a href="#" class="hover:text-fg" @click.prevent="window.scrollTo({ top: 0, behavior: 'smooth' })">Zpět nahoru <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,29 @@
+{
+  "name": "OP Digital",
+  "shortName": "OP Digital.",
+  "url": "https://www.opdigital.cz",
+  "locale": "cs_CZ",
+  "lang": "cs",
+  "description": "Vyvíjíme software na míru, tvoříme webové stránky a spravujeme reklamy, které pomáhají firmám růst.",
+  "email": "info@opdigital.cz",
+  "phone": "+420 606 189 196",
+  "phoneHref": "+420606189196",
+  "formEndpoint": "",
+  "social": {
+    "instagram": "https://www.instagram.com/opdigital.cz",
+    "facebook": "https://www.facebook.com/opdigital.cz",
+    "linkedin": "https://www.linkedin.com/company/opdigital"
+  },
+  "navMain": [
+    { "label": "Systémy", "url": "/systemy/" },
+    { "label": "Weby", "url": "/weby/" },
+    { "label": "Kampaně", "url": "/kampane/" }
+  ],
+  "navSecondary": [
+    { "label": "Případové studie", "url": "/pripadove-studie/" },
+    { "label": "Reference", "url": "/reference/" },
+    { "label": "O nás", "url": "/o-nas/" },
+    { "label": "Kontakt", "url": "/kontakt/" }
+  ],
+  "cta": { "label": "Pojďme to probrat", "url": "/kontakt/" }
+}

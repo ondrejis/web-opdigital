@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Patrik Šilhánek",
+    "role": "Partner pro nové spolupráce a nápady",
+    "bio": "První člověk, se kterým si popovídáte. Pomůže vám z nápadu udělat zadání a ze zadání plán, který dává byznysově smysl.",
+    "email": "info@opdigital.cz",
+    "phone": "+420 606 189 196",
+    "phoneHref": "+420606189196",
+    "photo": "",
+    "initials": "PŠ"
+  },
+  {
+    "name": "Ondřej Dvořák",
+    "role": "Partner pro úspěšnou realizaci projektů",
+    "bio": "Stará se o to, aby se z plánu stala hotová věc. Systémy, weby, technika a dotahování detailů až do spuštění a dál.",
+    "email": "info@opdigital.cz",
+    "phone": "",
+    "phoneHref": "",
+    "photo": "",
+    "initials": "OD"
+  }
+]

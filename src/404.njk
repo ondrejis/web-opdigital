@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+permalink: /404.html
+title: "Stránka nenalezena"
+description: "Tahle stránka neexistuje."
+eleventyExcludeFromCollections: true
+---
+<section class="relative overflow-hidden min-h-[70vh] flex items-center bg-grid">
+  <span class="giant-number absolute -top-10 -right-6 text-[clamp(10rem,40vw,36rem)]" aria-hidden="true">404</span>
+  <div class="wrap relative py-20">
+    <p class="eyebrow mb-8">Chyba 404</p>
+    <h1 class="display text-balance mb-10">Tady nic není<span class="text-accent">.</span></h1>
+    <p class="lead max-w-xl mb-10">Stránka neexistuje nebo se přestěhovala. Zkuste úvodní stránku, nebo nám rovnou napište.</p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="/" class="btn btn-primary btn-lg">Na úvod <span aria-hidden="true">→</span></a>
+      <a href="/kontakt/" class="btn btn-outline btn-lg">Kontakt</a>
+    </div>
+  </div>
+</section>

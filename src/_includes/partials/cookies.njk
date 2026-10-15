@@ -1,0 +1,17 @@
+<div
+  x-data="cookies"
+  x-cloak
+  x-show="show"
+  x-transition.opacity.duration.200ms
+  class="fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:bottom-8 md:max-w-md z-[60] border-2 border-line bg-bg p-6 md:p-8"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Nastavení cookies"
+>
+  <p class="text-xl md:text-2xl font-bold uppercase tracking-tighter leading-none mb-3">Cookies<span class="text-accent">.</span></p>
+  <p class="text-muted-fg text-sm md:text-base leading-tight mb-6">Používáme jen nezbytné cookies. Analytické zapneme pouze s vaším souhlasem. <a href="/ochrana-osobnich-udaju/" class="link">Více informací</a>.</p>
+  <div class="flex gap-3">
+    <button type="button" class="btn btn-primary btn-sm md:h-12 md:px-6 md:text-base flex-1" @click="set('all')">Povolit vše</button>
+    <button type="button" class="btn btn-outline btn-sm md:h-12 md:px-6 md:text-base flex-1" @click="set('necessary')">Jen nezbytné</button>
+  </div>
+</div>

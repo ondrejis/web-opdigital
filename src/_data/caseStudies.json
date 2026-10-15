@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "developersky-projekt",
+    "client": "Rezidenční projekt",
+    "category": "Webové stránky",
+    "categorySlug": "weby",
+    "title": "70 % domů prodáno za 5 měsíců.",
+    "summary": "Nový web developerského projektu, který z návštěvníků udělal zájemce o prohlídku a z prohlídek kupce.",
+    "featured": true,
+    "stats": [
+      { "value": 70, "suffix": " %", "label": "domů prodáno" },
+      { "value": 5, "suffix": "", "label": "měsíců od spuštění" }
+    ],
+    "brief": "Developer potřeboval prodat nové rodinné domy. Původní prezentace byla jedna stránka s PDF ceníkem a kontaktem, která nikoho nepřesvědčila.",
+    "solution": "Postavili jsme web, který provede zájemce celým projektem: lokalita, dispozice, standardy, financování a jasná cesta k rezervaci prohlídky. Každý dům má vlastní stránku se stavem dostupnosti.",
+    "result": "Během pěti měsíců od spuštění bylo prodáno 70 % domů. Většina kupců přišla přes web a formulář pro rezervaci prohlídky.",
+    "todo": "Doplnit název klienta, screenshoty a podrobnosti."
+  },
+  {
+    "slug": "rumme",
+    "client": "RumMe",
+    "category": "Webové stránky",
+    "categorySlug": "weby",
+    "title": "Značka, která si vybudovala důvěru.",
+    "summary": "Z nadšení pro rum jsme pomohli vybudovat komunitní značku s jasnou nabídkou degustací a příběhem, kterému lidé věří.",
+    "featured": false,
+    "stats": [
+      { "value": 247, "suffix": "", "label": "degustací" },
+      { "value": 32, "suffix": "", "label": "palíren" }
+    ],
+    "brief": "Zakladatel RumMe měl obrovské znalosti a nadšení pro rum, ale žádnou značku, která by to dokázala předat dál a prodat.",
+    "solution": "Vytvořili jsme identitu značky, příběh a web s jasnou nabídkou degustací. Důraz na autenticitu: skutečné příběhy palíren, skutečné lidi, skutečné zážitky.",
+    "result": "247 degustací, stovky účastníků a značka, která má v komunitě důvěru a respekt. Spolupráce s 32 palírnami z celého světa.",
+    "todo": "Doplnit screenshoty."
+  },
+  {
+    "slug": "axon-klinika",
+    "client": "AXON Klinika",
+    "category": "Webové stránky",
+    "categorySlug": "weby",
+    "title": "Víc poptávek každý den.",
+    "summary": "Web neurorehabilitační kliniky, který pacientům srozumitelně vysvětlí, s čím pomůže, a nabídne jednoduchou cestu k objednání.",
+    "featured": false,
+    "stats": [
+      { "value": 2, "suffix": "×", "label": "více denních poptávek" }
+    ],
+    "brief": "Klinika nabízí špičkovou neurorehabilitaci, ale původní web ji neuměl vysvětlit lidem, kteří ji hledají pro sebe nebo své blízké.",
+    "solution": "Nová struktura postavená na otázkách pacientů, lidský jazyk místo odborných termínů a objednávkový formulář dostupný z každé stránky.",
+    "result": "Po spuštění nového webu klinika eviduje výrazně více denních poptávek a objednání.",
+    "todo": "Ověřit a doplnit přesná čísla výsledků a screenshoty."
+  },
+  {
+    "slug": "rutstav",
+    "client": "Rutstav",
+    "category": "Webové stránky",
+    "categorySlug": "weby",
+    "title": "Stavební firma, která vypadá tak dobře, jak staví.",
+    "summary": "Firemní web pro stavební společnost: reference, které prodávají, a jasná cesta k poptávce.",
+    "featured": false,
+    "stats": [],
+    "brief": "Rutstav měl silné reference, ale web, který je neuměl ukázat. Zájemci odcházeli ke konkurenci s lepší prezentací.",
+    "solution": "Postavili jsme web kolem hotových staveb: velké fotografie, konkrétní čísla a jednoduchý poptávkový formulář.",
+    "result": "Profesionální prezentace, která odpovídá kvalitě práce firmy a přivádí relevantní poptávky.",
+    "todo": "Doplnit výsledky a screenshoty."
+  }
+]

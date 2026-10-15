@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#09090b"/>
+  <g stroke="#3f3f46" stroke-opacity="0.35">
+    <path d="M0 96H1200M0 192H1200M0 288H1200M0 384H1200M0 480H1200M0 576H1200M96 0V630M192 0V630M288 0V630M384 0V630M480 0V630M576 0V630M672 0V630M768 0V630M864 0V630M960 0V630M1056 0V630M1152 0V630"/>
+  </g>
+  <path d="M1010 -40C1010 -84 1046 -120 1090 -120H1130C1174 -120 1210 -84 1210 -40V0C1210 44 1174 80 1130 80H1010V-40Z" fill="none" stroke="#3f3f46" stroke-width="2" transform="translate(-80 150) scale(2.4)"/>
+  <rect x="0" y="622" width="480" height="8" fill="#fd5b38"/>
+  <text x="72" y="300" font-family="Space Grotesk, Inter, Arial, sans-serif" font-weight="700" font-size="150" letter-spacing="-8" fill="#fafafa">STAVÍME</text>
+  <text x="72" y="430" font-family="Space Grotesk, Inter, Arial, sans-serif" font-weight="700" font-size="150" letter-spacing="-8" fill="#fd5b38">SYSTÉMY</text>
+  <text x="72" y="560" font-family="Space Grotesk, Inter, Arial, sans-serif" font-weight="700" font-size="150" letter-spacing="-8" fill="#fafafa">NA MÍRU<tspan fill="#fd5b38">.</tspan></text>
+  <g transform="translate(72 72) scale(0.42)">
+    <path d="M0 80C0 35.8172 35.8172 0 80 0H120C164.183 0 200 35.8172 200 80V120C200 164.183 164.183 200 120 200H0V80Z" fill="#FD5B38"/>
+    <text x="100" y="128" text-anchor="middle" font-family="Space Grotesk, Inter, Arial, sans-serif" font-weight="700" font-size="84" fill="#fff">OP</text>
+  </g>
+  <text x="180" y="130" font-family="Space Grotesk, Inter, Arial, sans-serif" font-weight="500" font-size="40" fill="#fafafa">Digital</text>
+  <text x="1128" y="130" text-anchor="end" font-family="Space Grotesk, Inter, Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="4" fill="#a1a1aa">SYSTÉMY · WEBY · KAMPANĚ</text>
+</svg>

@@ -1,0 +1,27 @@
+{
+  "name": "web-opdigital",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "OP Digital – firemní web (Eleventy + Tailwind CSS + Alpine.js + Motion)",
+  "scripts": {
+    "dev": "concurrently -k -n css,11ty \"npm:css:watch\" \"npm:eleventy:serve\"",
+    "build": "npm run clean && npm run css:build && npm run eleventy:build",
+    "clean": "rm -rf dist",
+    "css:build": "tailwindcss -i ./src/styles/main.css -o ./dist/assets/css/main.css --minify",
+    "css:watch": "tailwindcss -i ./src/styles/main.css -o ./dist/assets/css/main.css --watch",
+    "eleventy:build": "eleventy",
+    "eleventy:serve": "eleventy --serve --quiet"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@alpinejs/collapse": "^3.17.4",
+    "@alpinejs/intersect": "^3.17.4",
+    "@tailwindcss/cli": "^4.3.3",
+    "alpinejs": "^3.17.4",
+    "concurrently": "^10.0.6",
+    "esbuild": "^0.28.2",
+    "motion": "^14.3.0",
+    "tailwindcss": "^4.3.3"
+  }
+}

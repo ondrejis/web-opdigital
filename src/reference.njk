@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+permalink: /reference/
+title: "Reference"
+description: "Firmy, které nám důvěřují. Stavební firmy, kliniky, výroba i služby – od Plzně po celou republiku."
+---
+<section class="relative overflow-hidden border-b-2 border-line bg-grid">
+  <div class="wrap relative py-20 md:py-32">
+    <p class="eyebrow mb-8" data-reveal>Reference</p>
+    <h1 class="display text-balance mb-10" data-reveal="clip">Firmy, které nám důvěřují<span class="text-accent">.</span></h1>
+    <p class="lead max-w-2xl" data-reveal data-reveal-delay="0.1">Stavební firmy, kliniky, výroba, služby i značky, které teprve začínaly. Různé obory, stejný přístup: poslouchat, navrhnout, postavit, dotáhnout.</p>
+  </div>
+</section>
+
+{% set marqueeSpeed = 50 %}{% set marqueeInvert = true %}
+{% include "partials/marquee-clients.njk" %}
+
+<section class="py-20 md:py-32">
+  <div class="wrap">
+    <ul class="hairline-grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4" data-reveal-group>
+      {% for c in clients %}
+        <li class="group relative flex items-center justify-center min-h-36 md:min-h-48 p-6 text-center hover:bg-accent hover:text-accent-fg transition-colors duration-300 overflow-hidden" data-reveal-item>
+          <span class="absolute top-3 left-4 text-xs font-bold tracking-widest text-muted group-hover:text-accent-fg/50" aria-hidden="true">{{ loop.index | pad }}</span>
+          {% if c.logo %}
+            <img src="{{ c.logo }}" alt="{{ c.name }}" class="max-h-14 w-auto" loading="lazy">
+          {% else %}
+            <span class="text-lg md:text-2xl font-bold uppercase tracking-tight">{{ c.name }}</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    <p class="mt-8 text-sm text-muted-fg uppercase tracking-widest">… a další. Seznam průběžně doplňujeme.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap flex flex-col md:flex-row md:items-end justify-between gap-8">
+    <h2 class="headline text-balance" data-reveal="clip">Chcete vidět čísla<span class="text-accent">?</span></h2>
+    <a href="/pripadove-studie/" class="btn btn-outline btn-lg" data-reveal>Případové studie <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+{% include "partials/cta-band.njk" %}
